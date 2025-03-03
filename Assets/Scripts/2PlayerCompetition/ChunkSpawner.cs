@@ -3,17 +3,35 @@ using UnityEngine;
 
 public class ChunkSpawner : MonoBehaviour
 {
-    public GameObject chunkPrefab; // Prefab của chunk
-    public int chunkCount = 3; // Số lượng chunk tối đa trên màn hình
-    public float chunkWidth = 32f; // Chiều rộng của mỗi chunk
-    public float moveSpeed = 5f; // Tốc độ di chuyển của chunk
-    private List<GameObject> chunks = new List<GameObject>(); // Danh sách chứa các chunk
-    private float nextChunkX = 0; // Vị trí X của chunk tiếp theo
+    public GameObject firstChunk; // Chunk đầu tiên đã có sẵn trên màn hình
+    public List<GameObject> chunkPrefabs; // Danh sách Prefab gốc (được load trước)
+    public float chunkWidth = 32f; // Chiều rộng mỗi chunk
+    public int maxChunks = 5; // Số chunk tối đa trên màn hình
+    public float moveSpeed = 5f; // Tốc độ di chuyển
+
+    private Queue<GameObject> activeChunks = new Queue<GameObject>(); // Hàng đợi chunk đang hiển thị
+    private List<GameObject> chunkPool = new List<GameObject>(); // Pool chứa các chunk có sẵn
+    private GameObject lastChunk; // Chunk cuối cùng đã spawn
 
     void Start()
     {
-        // Khởi tạo các chunk ban đầu
-        for (int i = 0; i < chunkCount; i++)
+        // Tạo pool từ danh sách prefab ban đầu
+        foreach (var prefab in chunkPrefabs)
+        {
+            GameObject chunk = Instantiate(prefab);
+            chunk.SetActive(false);
+            chunkPool.Add(chunk);
+        }
+
+        // Đưa chunk đầu tiên vào hàng đợi
+        if (firstChunk != null)
+        {
+            activeChunks.Enqueue(firstChunk);
+            lastChunk = firstChunk;
+        }
+
+        // Tạo các chunk còn lại từ pool
+        for (int i = 0; i < maxChunks - 1; i++)
         {
             SpawnChunk();
         }
@@ -21,31 +39,56 @@ public class ChunkSpawner : MonoBehaviour
 
     void Update()
     {
-        // Di chuyển tất cả các chunk sang trái
-        for (int i = chunks.Count - 1; i >= 0; i--)
-        {
-            GameObject chunk = chunks[i];
-            chunk.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        MoveChunks();
 
-            // Nếu chunk ra khỏi màn hình bên trái, thì xóa nó
-            if (chunk.transform.position.x < -chunkWidth * 2) // Kiểm tra với khoảng cách an toàn
+        // Xử lý chunk bị ra khỏi màn hình
+        if (activeChunks.Count > 0)
+        {
+            GameObject first = activeChunks.Peek();
+            if (first.transform.position.x < -22)
             {
-                Destroy(chunk);
-                chunks.RemoveAt(i);
+                ReuseChunk(); // Tái sử dụng chunk thay vì destroy
             }
         }
+    }
 
-        // Nếu số lượng chunk ít hơn giới hạn, spawn thêm chunk mới
-        if (chunks.Count < chunkCount)
+    void MoveChunks()
+    {
+        foreach (GameObject chunk in activeChunks)
         {
-            SpawnChunk();
+            chunk.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
+    }
+
+    void ReuseChunk()
+    {
+        GameObject oldChunk = activeChunks.Dequeue();
+        oldChunk.SetActive(false);
+        chunkPool.Add(oldChunk); // Đưa chunk cũ về pool
+        SpawnChunk(); // Lấy chunk mới từ pool
     }
 
     void SpawnChunk()
     {
-        GameObject newChunk = Instantiate(chunkPrefab, new Vector3(nextChunkX, 0, 0), Quaternion.identity);
-        chunks.Add(newChunk);
-        nextChunkX += chunkWidth;
+        GameObject chunk;
+        do
+        {
+            chunk = GetChunkFromPool();
+        } while (lastChunk != null && chunk.name == lastChunk.name); // Đảm bảo không trùng chunk trước đó
+
+        chunk.transform.position = new Vector3(lastChunk.transform.position.x + chunkWidth, 0, 0);
+        chunk.SetActive(true);
+        activeChunks.Enqueue(chunk);
+        lastChunk = chunk;
+    }
+
+    GameObject GetChunkFromPool()
+    {
+        if (chunkPool.Count == 0) return null; // Phòng trường hợp lỗi
+
+        int randomIndex = Random.Range(0, chunkPool.Count);
+        GameObject chunk = chunkPool[randomIndex];
+        chunkPool.RemoveAt(randomIndex);
+        return chunk;
     }
 }
