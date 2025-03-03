@@ -63,3 +63,6 @@ TagManager:
   - name: Reward
     uniqueID: 3580902361
     locked: 0
+  - name: Trap
+    uniqueID: 3508559753
+    locked: 0

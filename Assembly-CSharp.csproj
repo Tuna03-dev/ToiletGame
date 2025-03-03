@@ -62,6 +62,7 @@
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\CameraScroll.cs" />
     <Compile Include="Assets\GridScript.cs" />
+    <Compile Include="Assets\FiraBall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2DBirds_Pack3\Documentation 1\Documentation.txt" />
