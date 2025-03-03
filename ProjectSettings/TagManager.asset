@@ -10,7 +10,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
@@ -47,13 +47,10 @@ TagManager:
     uniqueID: 3673554377
     locked: 0
   - name: Ground
-    uniqueID: 4023465869
+    uniqueID: 1160648279
     locked: 0
   - name: Top
-    uniqueID: 1140759955
-    locked: 0
-  - name: Box
-    uniqueID: 275679497
+    uniqueID: 1012407385
     locked: 0
   - name: Reward
     uniqueID: 3580902361

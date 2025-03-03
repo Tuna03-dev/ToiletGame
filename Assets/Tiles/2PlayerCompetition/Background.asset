@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: cartoon_wooden_crate
+  m_Name: Background
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 4403994d74f26c840a6d8d1178f882e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd5cb452ed18ce64594f758349e5c177, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
