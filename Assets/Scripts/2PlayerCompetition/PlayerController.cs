@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
 
-        
+        if (IsOnGround()) { 
             if (Input.GetKeyDown(UpKey))
             {
                 ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
             {
                 ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
             }
-        
+        }
 
         // Kiểm tra game over
         CheckGameOver();
@@ -89,7 +89,16 @@ public class PlayerController : MonoBehaviour
 
     bool IsOnGround()
     {
-        return Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
+        float rayLength = 0.2f; // Khoảng cách kiểm tra
+        Vector2 originCenter = groundCheck.position;
+        Vector2 originRight = originCenter + new Vector2(-2f,0); // Điểm bên phải
+
+        // Bắn 3 tia xuống
+        bool center = Physics2D.Raycast(originCenter, Vector2.down, rayLength, groundLayer);
+        bool left = Physics2D.Raycast(originRight, Vector2.down, 0.5f, groundLayer);
+
+        // Kiểm tra nếu ít nhất một trong các tia chạm đất
+        return center  || left;
     }
 
     bool IsObstacleAhead()
