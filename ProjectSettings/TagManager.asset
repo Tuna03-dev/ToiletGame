@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Box
+  - Scroll
+  - Paper
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Ward
   - 
   - 
   - 
@@ -52,9 +54,12 @@ TagManager:
   - name: Top
     uniqueID: 1012407385
     locked: 0
+  - name: Player
+    uniqueID: 317911623
+    locked: 0
   - name: Reward
     uniqueID: 3580902361
     locked: 0
-  - name: Player
-    uniqueID: 317911623
+  - name: Trap
+    uniqueID: 3508559753
     locked: 0
