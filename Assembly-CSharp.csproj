@@ -60,7 +60,10 @@
   <ItemGroup>
     <Compile Include="Assets\PlayerScript.cs" />
     <Compile Include="Assets\Sprites\Level2\Script\ScrollingBackground.cs" />
+    <Compile Include="Assets\CameraFollow.cs" />
+    <Compile Include="Assets\FiraBall.cs" />
     <Compile Include="Assets\Scripts\2PlayerCompetition\PlayerController.cs" />
+    <Compile Include="Assets\CameraScroll.cs" />
     <Compile Include="Assets\GridScript.cs" />
     <Compile Include="Assets\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
   </ItemGroup>
