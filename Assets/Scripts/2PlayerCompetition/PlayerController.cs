@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
+    public GameObject fartEffect; // Hiệu ứng fart (gán trong Inspector)
+    public GameObject speedEffect; // Hiệu ứng khi tăng tốc (gán trong Inspector)
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,6 +27,15 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
         Time.timeScale = 0; // Dừng game ngay từ đầu
         StartCoroutine(CountdownAndStart()); // Đếm ngược rồi bắt đầu game
+        //ẩn fartEffect với speedEffect
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(false);
+        }
+        if (speedEffect != null)
+        {
+            speedEffect.SetActive(false);
+        }
     }
 
     IEnumerator CountdownAndStart()
@@ -84,10 +95,26 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = newGravity;
         rb.velocity = new Vector2(rb.velocity.x, 0);
         transform.rotation = Quaternion.Euler(0, y, rotation);
-        
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(true);
+            Invoke("HideFartEffect", 0.5f); 
+        }
+
     }
 
-    bool IsOnGround()
+    
+
+
+    void HideFartEffect()
+{
+    if (fartEffect != null)
+    {
+        fartEffect.SetActive(false);
+    }
+}
+
+bool IsOnGround()
     {
         return Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
     }
