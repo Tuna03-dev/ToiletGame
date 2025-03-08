@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
+    public GameObject fartEffect;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,6 +26,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
         Time.timeScale = 0; // Dừng game ngay từ đầu
         StartCoroutine(CountdownAndStart()); // Đếm ngược rồi bắt đầu game
+        // Ẩn hiệu ứng fart ban đầu
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(false);
+        }
     }
 
     IEnumerator CountdownAndStart()
@@ -48,11 +54,10 @@ public class PlayerController : MonoBehaviour
         if (!isGameStarted || isGameOver) return;
 
 
-        // Kiểm tra nếu nhân vật va vào tile gồ ghề phía trước
+        //Kiểm tra nếu nhân vật va vào tile gồ ghề phía trước
         if (IsObstacleAhead())
         {
             isMoving = false;
-            rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else
         {
@@ -84,18 +89,22 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = newGravity;
         rb.velocity = new Vector2(rb.velocity.x, 0);
         transform.rotation = Quaternion.Euler(0, y, rotation);
-        
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(true);
+            Invoke("HideFartEffect", 0.5f); // Ẩn sau 0.5 giây
+        }
     }
 
     bool IsOnGround()
     {
         float rayLength = 0.2f; // Khoảng cách kiểm tra
         Vector2 originCenter = groundCheck.position;
-        Vector2 originRight = originCenter + new Vector2(-2f,0); // Điểm bên phải
+        Vector2 originLeft = originCenter + new Vector2(-2f,0); 
 
         // Bắn 3 tia xuống
         bool center = Physics2D.Raycast(originCenter, Vector2.down, rayLength, groundLayer);
-        bool left = Physics2D.Raycast(originRight, Vector2.down, 0.5f, groundLayer);
+        bool left = Physics2D.Raycast(originLeft, Vector2.down, 0.5f, groundLayer);
 
         // Kiểm tra nếu ít nhất một trong các tia chạm đất
         return center  || left;
@@ -103,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsObstacleAhead()
     {
-        return Physics2D.Raycast(frontCheck.position, Vector2.right, 0.2f, groundLayer);
+        return Physics2D.Raycast(frontCheck.position, Vector2.right, 0.5f, groundLayer);
     }
 
     void CheckGameOver()
@@ -118,10 +127,6 @@ public class PlayerController : MonoBehaviour
             GameOver();
         }
     }
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    isMoving = false;
-    //}
 
     void GameOver()
     {
@@ -134,5 +139,13 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void HideFartEffect()
+    {
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(false);
+        }
     }
 }
