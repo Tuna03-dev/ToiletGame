@@ -8,6 +8,8 @@ TagManager:
   - Box
   - Scroll
   - Paper
+  - Bird
+  - Trap
   layers:
   - Default
   - TransparentFX
