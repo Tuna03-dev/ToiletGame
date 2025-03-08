@@ -1,0 +1,463 @@
+fileFormatVersion: 2
+guid: ab9d88daa83daf14faf13fd557cf4863
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_0
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 2860
+        width: 442
+        height: 719
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39517e1f77dd3c2429864750eab02ee3
+      internalID: -478365372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_1
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 2835
+        width: 418
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96cd6818d67334443b8fa2145ed12643
+      internalID: 859095946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_2
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 2844
+        width: 383
+        height: 723
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccf714e0218d3b438ceb9593b6fb514
+      internalID: 1136831205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_3
+      rect:
+        serializedVersion: 2
+        x: 3045
+        y: 2832
+        width: 361
+        height: 742
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b864b02a83d9c51479f1ef4aa80674f4
+      internalID: -124179930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1946
+        width: 404
+        height: 726
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b65a24f177bee4baabc5c64b9abfc0
+      internalID: -1884435550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_5
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 1974
+        width: 441
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a26ce40bdc302414cb041ac71cc89c13
+      internalID: -126260526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_6
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 2020
+        width: 475
+        height: 663
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d50fcefe0934c46b446d0810cfa9ba
+      internalID: -68947637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_7
+      rect:
+        serializedVersion: 2
+        x: 2912
+        y: 1999
+        width: 475
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b42fbf89f15c9f438ff2aee501ea4ff
+      internalID: 247233190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_8
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 1085
+        width: 426
+        height: 683
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e8ed7d88f8de04eafbf29ea38a1622
+      internalID: 1467594294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_9
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 1051
+        width: 427
+        height: 712
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a39cc5ff0079f4297f7aea1a7bb3e0
+      internalID: 1721341386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_10
+      rect:
+        serializedVersion: 2
+        x: 2118
+        y: 1025
+        width: 408
+        height: 737
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 345dac084fe4d5040bddd228e869ef06
+      internalID: -305769451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_11
+      rect:
+        serializedVersion: 2
+        x: 3034
+        y: 1016
+        width: 362
+        height: 749
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71de10acf5083a240bb90b1d3c539500
+      internalID: -1374280697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_12
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 123
+        width: 333
+        height: 737
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356781891ce13264d8b030c471a511ea
+      internalID: 1294954816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 126
+        width: 393
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2af1167d15705b4aa93bcc64976cf30
+      internalID: -3333295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_14
+      rect:
+        serializedVersion: 2
+        x: 2099
+        y: 151
+        width: 444
+        height: 714
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b1ed3ffa755514f9c24accf9b3670a
+      internalID: 1165469716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-man_punk_run_866px_by_907px-per-frame_15
+      rect:
+        serializedVersion: 2
+        x: 2917
+        y: 143
+        width: 496
+        height: 719
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b404bd3ee5798254abbf2179f8c57996
+      internalID: -366648140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      __stick-man_punk_run_866px_by_907px-per-frame_0: -478365372
+      __stick-man_punk_run_866px_by_907px-per-frame_1: 859095946
+      __stick-man_punk_run_866px_by_907px-per-frame_10: -305769451
+      __stick-man_punk_run_866px_by_907px-per-frame_11: -1374280697
+      __stick-man_punk_run_866px_by_907px-per-frame_12: 1294954816
+      __stick-man_punk_run_866px_by_907px-per-frame_13: -3333295
+      __stick-man_punk_run_866px_by_907px-per-frame_14: 1165469716
+      __stick-man_punk_run_866px_by_907px-per-frame_15: -366648140
+      __stick-man_punk_run_866px_by_907px-per-frame_2: 1136831205
+      __stick-man_punk_run_866px_by_907px-per-frame_3: -124179930
+      __stick-man_punk_run_866px_by_907px-per-frame_4: -1884435550
+      __stick-man_punk_run_866px_by_907px-per-frame_5: -126260526
+      __stick-man_punk_run_866px_by_907px-per-frame_6: -68947637
+      __stick-man_punk_run_866px_by_907px-per-frame_7: 247233190
+      __stick-man_punk_run_866px_by_907px-per-frame_8: 1467594294
+      __stick-man_punk_run_866px_by_907px-per-frame_9: 1721341386
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class Controller2Player : MonoBehaviour
 {
     public float gravityScale = 3.0f;
     public float moveSpeed = 0.5f;
@@ -69,7 +70,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
 
-        if (IsOnGround()) { 
+        if (IsOnGround())
+        {
             if (Input.GetKeyDown(UpKey))
             {
                 ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
@@ -84,7 +86,7 @@ public class PlayerController : MonoBehaviour
         CheckGameOver();
     }
 
-    void ReverseGravity(float newGravity,float y, float rotation)
+    void ReverseGravity(float newGravity, float y, float rotation)
     {
         rb.gravityScale = newGravity;
         rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -100,14 +102,14 @@ public class PlayerController : MonoBehaviour
     {
         float rayLength = 0.2f; // Khoảng cách kiểm tra
         Vector2 originCenter = groundCheck.position;
-        Vector2 originLeft = originCenter + new Vector2(-2f,0); 
+        Vector2 originLeft = originCenter + new Vector2(-2f, 0);
 
-        // Bắn 3 tia xuống
+        // Bắn 2 tia xuống
         bool center = Physics2D.Raycast(originCenter, Vector2.down, rayLength, groundLayer);
         bool left = Physics2D.Raycast(originLeft, Vector2.down, 0.5f, groundLayer);
 
         // Kiểm tra nếu ít nhất một trong các tia chạm đất
-        return center  || left;
+        return center || left;
     }
 
     bool IsObstacleAhead()
