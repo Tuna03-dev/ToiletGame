@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour
 
     public AudioClip audioWin;
     public AudioClip audioLose;
+
+    public TextMeshProUGUI txtReward;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -176,8 +179,10 @@ public class GameManager : MonoBehaviour
     public void RewardItem()
     {
         itemRewardCount++;
-        
-        if(itemRewardCount >= WIN_REWARD_COUNT)
+
+        txtReward.text = itemRewardCount.ToString() + "/" + WIN_REWARD_COUNT.ToString();
+
+        if (itemRewardCount >= WIN_REWARD_COUNT)
         {
             WinGameState();
         }
