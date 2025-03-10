@@ -96,8 +96,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         transform.rotation = Quaternion.Euler(0, y, rotation);
         if (fartEffect != null)
-        {
-            fartEffect.SetActive(true);
+        {fartEffect.SetActive(true);
             Invoke("HideFartEffect", 0.5f); 
         }
 
