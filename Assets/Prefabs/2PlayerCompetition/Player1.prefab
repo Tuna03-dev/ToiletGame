@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 1770470527155380908}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -387,9 +387,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  speedEffect: {fileID: 0}
   fartEffect: {fileID: 8362437145186567260}
+  bombEffect: {fileID: 0}
+  pushBackEffect: {fileID: 0}
+  shieldEffect: {fileID: 0}
   opponent: {fileID: 0}
   pushBackDuration: 0.5
+  winText: {fileID: 0}
+  winPopUp: {fileID: 0}
 --- !u!1 &3985172407139279535
 GameObject:
   m_ObjectHideFlags: 0

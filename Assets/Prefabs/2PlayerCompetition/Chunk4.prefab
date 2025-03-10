@@ -1379,6 +1379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2936527728652677897}
     m_Modifications:
+    - target: {fileID: 8585517417860934752, guid: 491e03898ec268544954c4751f9d4efc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8585517417860934760, guid: 491e03898ec268544954c4751f9d4efc, type: 3}
       propertyPath: m_Name
       value: BirdBlue

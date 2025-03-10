@@ -131,6 +131,14 @@ public class Controller2Player : MonoBehaviour
         StartCoroutine(RecoverSpeed()); // Hồi phục sau thời gian ngắn
     }
 
+    public void Push(float pushForce)
+    {
+        StopCoroutine("RecoverSpeed"); // Dừng di chuyển trong thời gian đẩy
+        moveSpeed = pushForce*5f; 
+
+        StartCoroutine(RecoverSpeed()); // Khôi phục tốc độ di chuyển
+    }
+
     bool IsOnGround()
     {
         float rayLength = 0.2f; // Khoảng cách kiểm tra
@@ -227,7 +235,7 @@ public class Controller2Player : MonoBehaviour
             {
                 opponent?.bombEffect.SetActive(true);
                 StartCoroutine(HideEffectCoroutine(opponent?.bombEffect, 0.3f));
-                StartCoroutine(ZeroGravityEffect(opponent, 1.5f)); // Không trọng lực đối thủ trong 3 giây
+                StartCoroutine(ZeroGravityEffect(opponent, 1f)); // Không trọng lực đối thủ trong 3 giây
             });
             Destroy(collision.gameObject);
         }
@@ -248,14 +256,9 @@ public class Controller2Player : MonoBehaviour
             ApplyRandomEffectToOpponent();
             Destroy(collision.gameObject);
         }
-
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Trap"))
+        else if (collision.CompareTag("Trap"))
         {
-            if (hasShield) 
+            if (hasShield)
             {
                 hasShield = false;
                 shieldEffect?.SetActive(false);
@@ -264,6 +267,21 @@ public class Controller2Player : MonoBehaviour
             {
                 GameOver();
             }
+        }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Chan");
+            // Xác định hướng đẩy
+            Vector2 pushDirection = (transform.position.x > collision.transform.position.x) ? Vector2.right : Vector2.left;
+            Debug.Log(pushDirection);
+            // Đẩy cả hai người chơi
+            Push(pushDirection.x);
+            opponent.Push(-pushDirection.x);
         }
     }
 
@@ -285,6 +303,7 @@ public class Controller2Player : MonoBehaviour
     private IEnumerator ZeroGravityEffect(Controller2Player target, float duration)
     {
         if (target == null) yield break;
+        Quaternion originalRotation = target.transform.rotation;
         float originalGravity = target.rb.gravityScale; // Lưu trọng lực gốc
         target.rb.gravityScale = 0; // Mất trọng lực
         float rotationSpeed = 360f; // Tốc độ xoay (độ/giây)
@@ -299,7 +318,7 @@ public class Controller2Player : MonoBehaviour
         }
 
         target.rb.gravityScale = originalGravity; // Khôi phục trọng lực
-        target.transform.rotation = Quaternion.identity; // Đưa nhân vật về góc quay ban đầu
+        target.transform.rotation = originalRotation; // Đưa nhân vật về góc quay ban đầu
     }
 
     private IEnumerator RecoverSpeed()
