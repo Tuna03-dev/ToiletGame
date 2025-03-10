@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\PlayerScript.cs" />
     <Compile Include="Assets\Assets\Sprites\Level2\Script\ScrollingBackground.cs" />
-    <Compile Include="Assets\Assets\NewDevelop\Scripts\Player.cs" />
     <Compile Include="Assets\Assets\CameraFollow.cs" />
     <Compile Include="Assets\Assets\FiraBall.cs" />
     <Compile Include="Assets\Assets\Scripts\2PlayerCompetition\PlayerController.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Assets\Assets\GridScript.cs" />
     <Compile Include="Assets\Assets\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
     <Compile Include="Assets\Assets\NewDevelop\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Assets\NewDevelop\Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\TextMesh Pro\Shaders\TMPro.cginc" />
