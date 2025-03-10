@@ -8,7 +8,7 @@ public class MapSpawner : MonoBehaviour
     public List<GameObject> chunkPrefabs; // Danh sách Prefab gốc (được load trước)
     public float chunkWidth = 32f; // Chiều rộng mỗi chunk
     public int maxChunks = 3; // Số chunk tối đa trên màn hình
-    public float moveSpeed = 5f; // Tốc độ di chuyển
+    public float moveSpeed = 4f; // Tốc độ di chuyển
 
     private Queue<GameObject> activeChunks = new Queue<GameObject>(); // Hàng đợi chunk đang hiển thị
     private List<GameObject> chunkPool = new List<GameObject>(); // Pool chứa các chunk có sẵn
