@@ -69,7 +69,6 @@ public class Controller2Player : MonoBehaviour
     {
         if (!isGameStarted || isGameOver) return;
 
-
         //Kiểm tra nếu nhân vật va vào tile gồ ghề phía trước
         if (IsObstacleAhead())
         {
@@ -168,6 +167,7 @@ public class Controller2Player : MonoBehaviour
     {
         isGameOver = true;
         rb.velocity = Vector2.zero;
+        Time.timeScale = 0;
         if (opponent != null)
         {
             opponent.Win();
