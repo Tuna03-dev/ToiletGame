@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PlayerScript.cs" />
-    <Compile Include="Assets\SoundBackground.cs" />
     <Compile Include="Assets\Sprites\Level2\Script\ScrollingBackground.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\ObstacleActivator.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Assets\TrapRaise.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
     <Compile Include="Assets\BoxRaiseScript.cs" />
+    <Compile Include="Assets\SoundBackground.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2DBirds_Pack3\Documentation 1\Documentation.txt" />
