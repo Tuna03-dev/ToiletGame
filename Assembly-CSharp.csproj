@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PlayerScript.cs" />
+    <Compile Include="Assets\SoundBackground.cs" />
     <Compile Include="Assets\Sprites\Level2\Script\ScrollingBackground.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\ObstacleActivator.cs" />
