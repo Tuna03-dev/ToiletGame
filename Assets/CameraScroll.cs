@@ -1,86 +1,75 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
     public float scrollSpeed = 3f; // Tốc độ cuộn màn hình
     public Transform player; // Đối tượng nhân vật
-    public GameObject boundaryObject; // GameObject chứa vùng giới hạn
+    public float killZoneOffset = 2f; // Khoảng cách giữa cạnh trái màn hình và vùng giết nhân vật
 
-    private Collider2D boundaryCollider; // Collider của vùng giới hạn
-    private Bounds boundaryBounds; // Giới hạn vùng di chuyển
-    private bool isScrolling = true; // Kiểm soát cuộn camera
+    private Camera mainCamera;
+    private float killZoneX;
 
     void Start()
     {
-        if (boundaryObject != null)
-        {
-            boundaryCollider = boundaryObject.GetComponent<Collider2D>(); // Lấy Collider2D từ GameObject
-            if (boundaryCollider == null)
-            {
-                Debug.LogError("Boundary Object không có Collider2D!");
-            }
-            else
-            {
-                boundaryBounds = boundaryCollider.bounds; // Lưu giới hạn vùng
-            }
-        }
-        else
-        {
-            Debug.LogError("Boundary Object chưa được gán!");
-        }
+        // Lấy component Camera
+        mainCamera = GetComponent<Camera>();
+
+        // Tính toán vị trí ban đầu của vùng giết nhân vật
+        CalculateKillZone();
     }
 
     void Update()
     {
-        if (isScrolling)
-        {
-            // Di chuyển camera theo chiều ngang
-            Vector3 nextPosition = transform.position + Vector3.right * scrollSpeed * Time.deltaTime;
+        // Di chuyển camera theo tốc độ cuộn
+        transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime);
 
-            // Giới hạn camera trong phạm vi của boundary
-            if (boundaryCollider != null)
-            {
-                float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
-                float maxX = boundaryBounds.max.x - cameraHalfWidth;
-                float minX = boundaryBounds.min.x + cameraHalfWidth;
+        // Cập nhật vị trí vùng giết nhân vật
+        CalculateKillZone();
 
-                // Giới hạn vị trí camera
-                nextPosition.x = Mathf.Clamp(nextPosition.x, minX, maxX);
-            }
-
-            transform.position = nextPosition;
-        }
-
-        // Kiểm tra xem nhân vật có ra khỏi màn hình không
+        // Kiểm tra xem người chơi có vượt ra khỏi vùng giết nhân vật không
         if (player != null)
         {
-            CheckPlayerOutOfScreen();
+            CheckPlayerPosition();
         }
     }
 
-    void CheckPlayerOutOfScreen()
+    void CalculateKillZone()
     {
-        // Lấy biên của camera
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)); // Mép trái camera
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0.5f, 0)); // Mép phải camera
-        Vector3 bottomEdge = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0, 0)); // Mép dưới camera
+        // Tính toán vị trí X của vùng giết nhân vật (cạnh trái của màn hình + offset)
+        float cameraLeftEdge = transform.position.x - mainCamera.orthographicSize * mainCamera.aspect;
+        killZoneX = cameraLeftEdge + killZoneOffset;
+    }
 
-        // Kiểm tra nếu player nằm ngoài màn hình
-        if (player.position.x < leftEdge.x || player.position.y < bottomEdge.y || player.position.x > rightEdge.x)
+    void CheckPlayerPosition()
+    {
+        // Nếu nhân vật đi ra khỏi vùng giết nhân vật (bên trái màn hình)
+        if (player.position.x < killZoneX)
         {
-            Debug.Log("Player bị ra khỏi màn hình -> Chết!");
-            KillPlayer();
+            // Tạm thời chỉ in thông báo trong console
+            Debug.Log("Player would be killed here!");
+
+            // Khi bạn đã tạo phương thức Die(), hãy gọi:
+            // PlayerScript playerScript = player.GetComponent<PlayerScript>();
+            // if (playerScript != null)
+            // {
+            //     playerScript.Die();
+            // }
         }
     }
 
-    void KillPlayer()
+    // Hiển thị vùng giết nhân vật trong Editor
+    void OnDrawGizmos()
     {
-        // Reset hoặc xử lý chết nhân vật
-        Destroy(player.gameObject); // Xóa nhân vật (hoặc thay thế bằng reset)
-    }
-
-    public void StopScrolling()
-    {
-        isScrolling = false;
+        if (Application.isPlaying && mainCamera != null)
+        {
+            Gizmos.color = Color.red;
+            float cameraHeight = 2f * mainCamera.orthographicSize;
+            Gizmos.DrawLine(
+                new Vector3(killZoneX, transform.position.y - cameraHeight / 2, 0),
+                new Vector3(killZoneX, transform.position.y + cameraHeight / 2, 0)
+            );
+        }
     }
 }
