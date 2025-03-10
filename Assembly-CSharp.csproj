@@ -63,10 +63,13 @@
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\ObstacleActivator.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\PlayerController.cs" />
+    <Compile Include="Assets\BoxRaise.cs" />
     <Compile Include="Assets\CameraScroll.cs" />
     <Compile Include="Assets\GridScript.cs" />
     <Compile Include="Assets\BirdScript.cs" />
+    <Compile Include="Assets\TrapRaise.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
+    <Compile Include="Assets\BoxRaiseScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2DBirds_Pack3\Documentation 1\Documentation.txt" />

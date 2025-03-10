@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public GameObject fartEffect;
     public GameObject speedEffect;
-
+    public GameObject fallingObjectPrefab; // Object rơi xuống
+    public float spawnHeight = 5f;
     public float speedBoostDuration = 1f;
     private bool isSpeedBoosted = false;
     private CapsuleCollider2D capsuleCollider2D;
@@ -152,7 +153,7 @@ public class PlayerController : MonoBehaviour
         isGameOver = true;
         rb.velocity = Vector2.zero;
         Time.timeScale = 0;
-        animator.SetBool("IsDead", true); // Kích hoạt animation chết
+        
     }
 
     public void RestartGame()
@@ -194,11 +195,12 @@ public class PlayerController : MonoBehaviour
 
             Invoke("RestoreMoveSpeed", 0.5f);
         }
+
         if (collision.gameObject.CompareTag("Trap"))
         {
             Debug.Log("Player va vào trap!");
             animator.SetBool("die", true);
-            moveSpeed = -3;
+            moveSpeed = -5;
 
             // Gửi thông báo đến Camera để dừng cuộn
             CameraScroll cameraScript = Camera.main.GetComponent<CameraScroll>();
@@ -207,20 +209,55 @@ public class PlayerController : MonoBehaviour
                 cameraScript.StopScrolling();
             }
 
+            // **Reset gravity về hướng xuống dưới**
+            rb.gravityScale = Mathf.Abs(gravityScale); // Đảm bảo gravity luôn dương
+            transform.rotation = Quaternion.identity; // Reset xoay nhân vật về mặc định
+
             // Dừng nhân vật sau 1 giây
             Invoke("StopPlayer", 1f);
+
+            // Chỉnh collider nằm ngang sau khi chết
             capsuleCollider2D.direction = CapsuleDirection2D.Horizontal;
             capsuleCollider2D.size = new Vector2(5.646687f, 2.417982f);
             capsuleCollider2D.offset = new Vector2(0.15F, 0.04399896f);
+
+            // Gọi object rơi sau khi player đã dừng lại
+            Invoke("SpawnFallingObject", 1.2f);
         }
     }
-    
+
+    void SpawnFallingObject()
+    {
+        if (fallingObjectPrefab != null)
+        {
+            Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
+            GameObject fallingObject = Instantiate(fallingObjectPrefab, spawnPosition, Quaternion.identity);
+
+            // Thêm Rigidbody2D để rơi tự nhiên
+            Rigidbody2D rb = fallingObject.GetComponent<Rigidbody2D>();
+            if (rb == null)
+            {
+                rb = fallingObject.AddComponent<Rigidbody2D>();
+            }
+            rb.gravityScale = 2; // Điều chỉnh tốc độ rơi theo ý bạn
+        }
+    }
+
+    // Hàm để camera focus vào nhân vật theo trục X
+    void FocusCameraOnPlayer()
+    {
+        Vector3 targetPosition = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        Camera.main.transform.position = targetPosition; 
+    }
+
+
 
     // Phương thức để dừng nhân vật lại
     void StopPlayer()
     {
         moveSpeed = 0;
         rb.velocity = Vector2.zero;
+        FocusCameraOnPlayer();
     }
 
 

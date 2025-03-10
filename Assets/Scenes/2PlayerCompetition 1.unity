@@ -762,6 +762,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  fartEffect: {fileID: 0}
+  speedEffect: {fileID: 0}
+  speedBoostDuration: 1
 --- !u!70 &1356800396
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
