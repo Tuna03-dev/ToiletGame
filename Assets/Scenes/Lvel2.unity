@@ -1258,6 +1258,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &476902099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1943808451, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
+  m_PrefabInstance: {fileID: 877596645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &506770615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1540,6 +1545,11 @@ MonoBehaviour:
   moveSpeed: 4
   moveDistance: 1
   isMovingRight: 0
+--- !u!1 &791402367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2437824313698332872, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
+  m_PrefabInstance: {fileID: 877596645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &802683917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1865,6 +1875,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
     - target: {fileID: 293466885, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293466885, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
       propertyPath: trapSound
       value: 
       objectReference: {fileID: 8300000, guid: f688c373d622aa84fb108e6fb0ffb7c5, type: 3}
@@ -1948,7 +1962,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 293466885, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
 --- !u!4 &877596646 stripped
 Transform:
@@ -2051,6 +2066,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &877596660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341777716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22c34bf01f26c0428baa84b1540492b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: 3
+  moveSpeed: 5
+  UpKey: 273
+  DownKey: 274
+  countdownText: {fileID: 294688903}
+  groundCheck: {fileID: 1866335662}
+  frontCheck: {fileID: 476902099}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  fartEffect: {fileID: 791402367}
+  speedEffect: {fileID: 1451436386}
+  fallingObjectPrefab: {fileID: 313525970}
+  spawnHeight: 5
+  speedBoostDuration: 0.3
+  fartSound: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
+  paperSound: {fileID: 8300000, guid: 89014a5abe7f5b943938167936c0ebf1, type: 3}
+  trapSound: {fileID: 8300000, guid: f688c373d622aa84fb108e6fb0ffb7c5, type: 3}
 --- !u!1001 &899158886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19511,6 +19556,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafc70ac1d83b3e45a7b06cfcd6a5c17, type: 3}
+--- !u!1 &1451436386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2437824314870542541, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
+  m_PrefabInstance: {fileID: 877596645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1525405109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19994,6 +20044,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1866335662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 455910637, guid: f50e5b0ce05d3534689c070bfaee6841, type: 3}
+  m_PrefabInstance: {fileID: 877596645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1884000517
 GameObject:
   m_ObjectHideFlags: 0

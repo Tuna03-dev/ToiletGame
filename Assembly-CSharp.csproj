@@ -71,6 +71,7 @@
     <Compile Include="Assets\TrapRaise.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
     <Compile Include="Assets\BoxRaiseScript.cs" />
+    <Compile Include="Assets\Scripts\Level2\CommonPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2DBirds_Pack3\Documentation 1\Documentation.txt" />
