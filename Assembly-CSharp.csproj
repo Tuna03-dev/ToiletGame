@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PlayerScript.cs" />
+    <Compile Include="Assets\SoundBackground.cs" />
     <Compile Include="Assets\Sprites\Level2\Script\ScrollingBackground.cs" />
     <Compile Include="Assets\NewDevelop\Scripts\Player.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\TrapRaise.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
     <Compile Include="Assets\NewDevelop\Scripts\GameManager.cs" />
+    <Compile Include="Assets\FiraBall.cs" />
     <Compile Include="Assets\BoxRaiseScript.cs" />
   </ItemGroup>
   <ItemGroup>

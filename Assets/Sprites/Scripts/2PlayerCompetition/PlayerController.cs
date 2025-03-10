@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         if (IsObstacleAhead())
         {
             isMoving = false;
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else
         {
@@ -95,8 +96,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         transform.rotation = Quaternion.Euler(0, y, rotation);
         if (fartEffect != null)
-        {
-            fartEffect.SetActive(true);
+        {fartEffect.SetActive(true);
             Invoke("HideFartEffect", 0.5f); 
         }
 
@@ -115,16 +115,7 @@ public class PlayerController : MonoBehaviour
 
 bool IsOnGround()
     {
-        float rayLength = 0.2f; // Khoảng cách kiểm tra
-        Vector2 originCenter = groundCheck.position;
-        Vector2 originLeft = originCenter + new Vector2(-2f, 0);
-
-        // Bắn 2 tia xuống
-        bool center = Physics2D.Raycast(originCenter, Vector2.down, rayLength, groundLayer);
-        bool left = Physics2D.Raycast(originLeft, Vector2.down, 0.5f, groundLayer);
-
-        // Kiểm tra nếu ít nhất một trong các tia chạm đất
-        return center || left;
+        return Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayer);
     }
 
     bool IsObstacleAhead()
