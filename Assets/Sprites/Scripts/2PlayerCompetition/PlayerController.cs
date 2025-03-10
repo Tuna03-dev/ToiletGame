@@ -25,8 +25,11 @@ public class PlayerController : MonoBehaviour
     private bool isSpeedBoosted = false;
     private CapsuleCollider2D capsuleCollider2D;
     private float originalSpeed;
-
-    private Animator animator; // Thêm Animator vào đây
+    public AudioClip fartSound;
+    public AudioClip paperSound;
+    private AudioSource audioSource;
+    private Animator animator;
+    public AudioClip trapSound;
 
     void Start()
     {
@@ -37,6 +40,12 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.velocity = Vector2.zero;
         originalSpeed = moveSpeed;
+        audioSource = GetComponent<AudioSource>(); 
+
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(false);
+        }
         if (fartEffect != null)
         {
             fartEffect.SetActive(false);
@@ -91,20 +100,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(UpKey))
             {
+                PlayFartEffect();
                 ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
-                if (fartEffect != null)
-                {
-                    fartEffect.SetActive(true);
-                    Invoke("HideFartEffect", 0.5f); // Ẩn sau 0.5 giây
-                }
             }
             else if (Input.GetKeyDown(DownKey))
             {
-                if (fartEffect != null)
-                {
-                    fartEffect.SetActive(true);
-                    Invoke("HideFartEffect", 0.5f); // Ẩn sau 0.5 giây
-                }
+                PlayFartEffect();
                 ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
             }
         }
@@ -116,7 +117,19 @@ public class PlayerController : MonoBehaviour
         // Kiểm tra game over
         CheckGameOver();
     }
+    void PlayFartEffect()
+    {
+        if (fartEffect != null)
+        {
+            fartEffect.SetActive(true);
+            Invoke("HideFartEffect", 0.5f);
+        }
 
+        if (audioSource != null && fartSound != null)
+        {
+            audioSource.PlayOneShot(fartSound); // Phát âm thanh fart
+        }
+    }
     void ReverseGravity(float newGravity, float y, float rotation)
     {
         rb.gravityScale = newGravity;
@@ -174,15 +187,21 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Paper") && !isSpeedBoosted)
         {
-            Debug.Log("Player đi qua cuộn giấy!");
+            Debug.Log("Player ăn Paper! Buff Speed!");
             ActivateSpeedBoost();
 
-            // Ẩn hoặc phá hủy cuộn giấy
+            
+            if (audioSource != null && paperSound != null)
+            {
+                audioSource.PlayOneShot(paperSound);
+            }
+
+           
             Destroy(other.gameObject);
         }
 
-        // Kiểm tra va vào trap
         
+
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -199,6 +218,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             Debug.Log("Player va vào trap!");
+            if (audioSource != null && trapSound != null)
+            {
+                audioSource.PlayOneShot(trapSound); // Phát âm thanh va vào trap
+            }
             animator.SetBool("die", true);
             moveSpeed = -5;
 
