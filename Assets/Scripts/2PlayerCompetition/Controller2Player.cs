@@ -226,7 +226,7 @@ public class Controller2Player : MonoBehaviour
             ApplyEffectToOpponent(() =>
             {
                 opponent?.bombEffect.SetActive(true);
-                StartCoroutine(HideEffectCoroutine(opponent?.pushBackEffect, 0.3f));
+                StartCoroutine(HideEffectCoroutine(opponent?.bombEffect, 0.3f));
                 StartCoroutine(ZeroGravityEffect(opponent, 1.5f)); // Không trọng lực đối thủ trong 3 giây
             });
             Destroy(collision.gameObject);
