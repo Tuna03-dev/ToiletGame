@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: fbd76d9f4f4700649913af5120ccf69c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_0
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 2400
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b95ee92a3fe220a42985d6c7d5d28eeb
+      internalID: 638993675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_2
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 2400
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 097e79c142310ab4580b49fe1bc203ad
+      internalID: -1426988324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_3
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 2400
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb4f152335cb26c41836b7d3a816c7e2
+      internalID: -2145100230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_4
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 2400
+        width: 619.2
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89d3811fada0bc4a915b67db1bcb3b0
+      internalID: 1285253301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_5
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1600
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc3d53991ece0c4cbc3645a21810d3b
+      internalID: 387388553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_7
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 1600
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ea3259717a1554f9a0fa4c42b07959
+      internalID: 1868955024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_8
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 1600
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6346466cc8331c446a8090052a91d299
+      internalID: -1234726754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_9
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 1600
+        width: 619.2
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e411f8ef54b2347a9674dc28dcdf90
+      internalID: -837980354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_10
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 800
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874e66fe34eda8747abbdbaa59cdc617
+      internalID: 1758959565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_12
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 800
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82d29195b01f60408c69000248344fd
+      internalID: -167904327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_13
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 800
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae426fc85371984e9222f440ac1912b
+      internalID: 289375141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_14
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 800
+        width: 619.2
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a449aef099668a43a300feecbde6dde
+      internalID: 227455537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_15
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 0
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0fcbccd76899eb4d8a48cc78030f86e
+      internalID: -1864488190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_17
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 0
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b026842b56fa1804fb042bb767a5e810
+      internalID: 634254543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_18
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 0
+        width: 619
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d3c12b10d42fe48b170569cdfa07db
+      internalID: -907697219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __stick-girl_run_774px_by_800px_per_frame_19
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 0
+        width: 619.2
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30601ccfa46635c4798477c03e78d946
+      internalID: -834876827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      __stick-girl_run_774px_by_800px_per_frame_0: 638993675
+      __stick-girl_run_774px_by_800px_per_frame_1: 1082704850
+      __stick-girl_run_774px_by_800px_per_frame_10: 1758959565
+      __stick-girl_run_774px_by_800px_per_frame_11: -1240590303
+      __stick-girl_run_774px_by_800px_per_frame_12: -167904327
+      __stick-girl_run_774px_by_800px_per_frame_13: 289375141
+      __stick-girl_run_774px_by_800px_per_frame_14: 227455537
+      __stick-girl_run_774px_by_800px_per_frame_15: -1864488190
+      __stick-girl_run_774px_by_800px_per_frame_16: -527647503
+      __stick-girl_run_774px_by_800px_per_frame_17: 634254543
+      __stick-girl_run_774px_by_800px_per_frame_18: -907697219
+      __stick-girl_run_774px_by_800px_per_frame_19: -834876827
+      __stick-girl_run_774px_by_800px_per_frame_2: -1426988324
+      __stick-girl_run_774px_by_800px_per_frame_3: -2145100230
+      __stick-girl_run_774px_by_800px_per_frame_4: 1285253301
+      __stick-girl_run_774px_by_800px_per_frame_5: 387388553
+      __stick-girl_run_774px_by_800px_per_frame_6: -1394947855
+      __stick-girl_run_774px_by_800px_per_frame_7: 1868955024
+      __stick-girl_run_774px_by_800px_per_frame_8: -1234726754
+      __stick-girl_run_774px_by_800px_per_frame_9: -837980354
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

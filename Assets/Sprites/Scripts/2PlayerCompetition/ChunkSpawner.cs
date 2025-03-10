@@ -13,6 +13,8 @@ public class ChunkSpawner : MonoBehaviour
     private List<GameObject> chunkPool = new List<GameObject>(); // Pool chứa các chunk có sẵn
     private GameObject lastChunk; // Chunk cuối cùng đã spawn
 
+    public bool IsUpdateChunk { get; set; } = true;
+
     void Start()
     {
         // Tạo pool từ danh sách prefab ban đầu
@@ -39,6 +41,9 @@ public class ChunkSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!IsUpdateChunk)
+            return;
+
         MoveChunks();
 
         // Xử lý chunk bị ra khỏi màn hình
