@@ -1,29 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
-    public float scrollSpeed = 3f; // Tốc độ cuộn màn hình
-    public Transform player; // Đối tượng nhân vật
-    public GameObject boundaryObject; // GameObject chứa vùng giới hạn
-
-    private Collider2D boundaryCollider; // Collider của vùng giới hạn
-    private Bounds boundaryBounds; // Giới hạn vùng di chuyển
-    private bool isScrolling = true; // Kiểm soát cuộn camera
+    public float scrollSpeed = 3f;
+    public Transform player; 
+    public GameObject boundaryObject;
+    public GameObject dieEffectPrefab; // Prefab của hiệu ứng die
+    private Collider2D boundaryCollider;
+    private Bounds boundaryBounds;
+    private bool isScrolling = true;
+    private bool isEffectSpawned = false; // Kiểm tra nếu hiệu ứng đã được tạo
+    private Vector3 playerLastPosition; // Vị trí cuối cùng của player trước khi ra khỏi màn hình
 
     void Start()
     {
+        // Kiểm tra xem player có được gán trong Inspector chưa
         if (boundaryObject != null)
         {
-            boundaryCollider = boundaryObject.GetComponent<Collider2D>(); // Lấy Collider2D từ GameObject
+            boundaryCollider = boundaryObject.GetComponent<Collider2D>();
             if (boundaryCollider == null)
             {
                 Debug.LogError("Boundary Object không có Collider2D!");
             }
             else
             {
-                boundaryBounds = boundaryCollider.bounds; // Lưu giới hạn vùng
+                boundaryBounds = boundaryCollider.bounds;
             }
         }
         else
@@ -62,14 +63,17 @@ public class CameraScroll : MonoBehaviour
 
     void CheckPlayerOutOfScreen()
     {
-        // Lấy biên của camera
+        // Lấy biên của camera (theo chiều ngang và dọc)
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)); // Mép trái camera
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0.5f, 0)); // Mép phải camera
         Vector3 bottomEdge = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0, 0)); // Mép dưới camera
+        Vector3 topEdge = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1, 0)); // Mép trên camera
 
         // Kiểm tra nếu player nằm ngoài màn hình
-        if (player.position.x < leftEdge.x || player.position.y < bottomEdge.y || player.position.x > rightEdge.x)
+        if (player.position.x < leftEdge.x || player.position.x > rightEdge.x || player.position.y < bottomEdge.y || player.position.y > topEdge.y)
         {
+            // Lưu lại vị trí của player trước khi ra khỏi màn hình
+            playerLastPosition = player.position;
             Debug.Log("Player bị ra khỏi màn hình -> Chết!");
             KillPlayer();
         }
@@ -77,9 +81,37 @@ public class CameraScroll : MonoBehaviour
 
     void KillPlayer()
     {
-        // Reset hoặc xử lý chết nhân vật
-        Destroy(player.gameObject); // Xóa nhân vật (hoặc thay thế bằng reset)
+        if (!isEffectSpawned && dieEffectPrefab != null)
+        {
+            // Instantiate hiệu ứng die tại vị trí cuối cùng của player
+            GameObject dieEffect = Instantiate(dieEffectPrefab, playerLastPosition, Quaternion.identity);
+
+            // Phát âm thanh của hiệu ứng die
+            AudioSource dieEffectAudio = dieEffect.GetComponent<AudioSource>();
+            if (dieEffectAudio != null)
+            {
+                dieEffectAudio.Play(); // Phát âm thanh khi nhân vật chết
+            }
+
+            isEffectSpawned = true; // Đánh dấu là hiệu ứng đã được tạo
+        }
+
+        // Dừng cuộn camera
+        StopScrolling();
+
+        // Làm nhân vật biến mất
+        player.gameObject.SetActive(false); // Ẩn nhân vật (dùng player.gameObject thay vì player)
+
+        // Gọi hàm Game Over trong CommonPlayer
+        CommonPlayer playerScript = player.GetComponent<CommonPlayer>();
+        if (playerScript != null)
+        {
+            playerScript.GameOver(); // Thực hiện game over
+        }
     }
+
+
+
 
     public void StopScrolling()
     {
