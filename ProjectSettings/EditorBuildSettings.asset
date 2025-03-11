@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: e0596a4ff7cc75042b15389dfbcb9dcb
+  - enabled: 1
+    path: Assets/Scenes/Lvel2.unity
+    guid: b78125f200ab3f24484345d2b1f2c31c
+  - enabled: 1
+    path: Assets/Scenes/2PlayerCom.unity
+    guid: 49b36084a6e80244fa37691eb2e14a88
+  - enabled: 1
+    path: Assets/Scenes/Map2Player.unity
+    guid: 72839b0faa30fe947a92ac0044521578
+  - enabled: 0
+    path: Assets/Scenes/SecretLevel.unity
+    guid: c45a6be08eaa1614d9526bb93209507e
   m_configObjects: {}

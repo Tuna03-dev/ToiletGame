@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
-    public GameObject fartEffect; // Hiệu ứng fart (gán trong Inspector)
-    public GameObject speedEffect; // Hiệu ứng khi tăng tốc (gán trong Inspector)
+    public GameObject fartEffect; 
+    public GameObject speedEffect; 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -96,8 +96,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         transform.rotation = Quaternion.Euler(0, y, rotation);
         if (fartEffect != null)
-        {
-            fartEffect.SetActive(true);
+        {fartEffect.SetActive(true);
             Invoke("HideFartEffect", 0.5f); 
         }
 
@@ -136,10 +135,7 @@ bool IsOnGround()
             GameOver();
         }
     }
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    isMoving = false;
-    //}
+    
 
     void GameOver()
     {
