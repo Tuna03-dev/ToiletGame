@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
 
     private float originalSpeed;
+    private bool isGrounded = false;
 
 
     void Start()
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (!IsGameStarted || isGameOver) return;
+        isGrounded = IsOnGround();
 
 
         // Kiểm tra nếu nhân vật va vào tile gồ ghề phía trước
@@ -82,13 +84,16 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(UpKey))
+        if (isGrounded)
         {
-            ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
-        }
-        else if (Input.GetKeyDown(DownKey))
-        {
-            ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
+            if (Input.GetKeyDown(UpKey))
+            {
+                ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
+            }
+            else if (Input.GetKeyDown(DownKey))
+            {
+                ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
+            }
         }
 
 

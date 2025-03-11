@@ -680,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: moveSpeed
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_RootOrder
@@ -1607,7 +1607,7 @@ MonoBehaviour:
   - {fileID: 4645254059981785466, guid: 4f3af97f6a8c2ba40bff1d6451d1200a, type: 3}
   chunkWidth: 32
   maxChunks: 2
-  moveSpeed: 4
+  moveSpeed: 3.5
 --- !u!1 &1090346255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,7 +1822,7 @@ SortingGroup:
   m_GameObject: {fileID: 1263452873}
   m_Enabled: 1
   m_SortingLayerID: 317911623
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 111
 --- !u!1 &1289810770
 GameObject:
