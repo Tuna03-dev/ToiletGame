@@ -73,6 +73,7 @@
     <Compile Include="Assets\NewDevelop\Scripts\GameManager.cs" />
     <Compile Include="Assets\FiraBall.cs" />
     <Compile Include="Assets\BoxRaiseScript.cs" />
+    <Compile Include="Assets\BirdScripts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

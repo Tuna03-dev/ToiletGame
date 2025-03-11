@@ -134,11 +134,11 @@ public class Player : MonoBehaviour
     void CheckGameOver()
     {
         float cameraX = Camera.main.transform.position.x;
-        if (transform.position.x < cameraX - 17f) GameOver();
+        if (transform.position.x < cameraX - 13f) GameOver();
 
         float cameraY = Camera.main.transform.position.y;
         float screenHeight = Camera.main.orthographicSize;
-        if (transform.position.y > cameraY + screenHeight + 3f || transform.position.y < cameraY - screenHeight - 2f)
+        if (transform.position.y > cameraY + screenHeight + 1f || transform.position.y < cameraY - screenHeight - 1f)
         {
             GameOver();
         }
@@ -176,6 +176,16 @@ public class Player : MonoBehaviour
             PlayAudio(audioTriggerTrapItem);
 
             GameManager.Instance.TriggerOstacle();
+        }
+        if (collision.CompareTag("Bird"))
+        {
+            Debug.Log("Player va vào bird!");
+
+            originalSpeed = moveSpeed;
+            moveSpeed = -3;
+            GameManager.Instance.TriggerOstacle();
+
+            Invoke("RestoreMoveSpeed", 0.5f);
         }
         if (collision.CompareTag("Reward"))
         {
