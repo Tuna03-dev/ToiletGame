@@ -157,38 +157,44 @@ public class Player : MonoBehaviour
         if (!IsGameStarted) 
             return;
 
-        if (collision.name.Contains("PaperToilet"))
+        if (collision.CompareTag("Paper"))
         {
             if (!isBoosting)
             {
-
+                Destroy(collision.gameObject);
                 isBoosting = true;
                 speedEffect.SetActive(true);
                 moveSpeed *= boostSpeed;
 
                 StartCoroutine(IEWaitBoost());
 
-                Destroy(collision.gameObject);
+                
             }
         }
-        if (collision.name.Contains("MetalTrap"))
+        if (collision.CompareTag("Trap"))
         {
             PlayAudio(audioTriggerTrapItem);
 
             GameManager.Instance.TriggerOstacle();
         }
-        if (collision.name.Contains("RewardItem"))
+        if (collision.CompareTag("Reward"))
         {
+            Destroy(collision.gameObject);
             PlayAudio(audioTriggerRewardItem);
 
             GameManager.Instance.RewardItem();
 
-            Destroy(collision.gameObject);
+            
         }
     }
 
     public void Stop()
     {
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D is null in Player.Stop()");
+            return;
+        }
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
     }
@@ -204,7 +210,7 @@ public class Player : MonoBehaviour
 
     public void PlayAudio(AudioClip audio)
     {
-        audioSource.clip = audio;
+        audioSource.PlayOneShot(audio);
         audioSource.Play();
     }
 }

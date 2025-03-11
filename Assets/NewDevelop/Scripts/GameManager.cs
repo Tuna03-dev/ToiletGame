@@ -214,8 +214,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayAudio(AudioClip audio)
     {
-        audioSource.clip = audio;
-        audioSource.Play();
+        audioSource.PlayOneShot(audio);
+        
     }
 }
 

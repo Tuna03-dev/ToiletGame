@@ -10,6 +10,7 @@ TagManager:
   - Paper
   - Bird
   - Trap
+  - Reward
   layers:
   - Default
   - TransparentFX

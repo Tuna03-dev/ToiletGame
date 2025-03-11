@@ -71,8 +71,8 @@
     <Compile Include="Assets\TrapRaise.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
     <Compile Include="Assets\NewDevelop\Scripts\GameManager.cs" />
-    <Compile Include="Assets\BoxRaiseScript.cs" />
     <Compile Include="Assets\FiraBall.cs" />
+    <Compile Include="Assets\BoxRaiseScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
