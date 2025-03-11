@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943808450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.95, y: -0.07, z: 0}
+  m_LocalPosition: {x: 2.16, y: -0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,14 +87,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2437824313698332872}
-  m_LocalRotation: {x: -0, y: -0, z: 0.8428206, w: 0.5381948}
-  m_LocalPosition: {x: -2.88, y: -1.18, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.77740484, w: 0.62900054}
+  m_LocalPosition: {x: -3.040001, y: -0.96000004, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2437824315460719142}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 114.878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 102.047}
 --- !u!212 &2437824313698332878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -285,10 +285,10 @@ GameObject:
   - component: {fileID: 2437824315460719142}
   - component: {fileID: 2437824315460719137}
   - component: {fileID: 2437824315460719136}
-  - component: {fileID: 2437824315460719140}
   - component: {fileID: 2437824315460719143}
-  - component: {fileID: 2437824315460719141}
-  - component: {fileID: 293466885}
+  - component: {fileID: 877596665}
+  - component: {fileID: 877596653}
+  - component: {fileID: 877596660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -388,22 +388,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!70 &2437824315460719140
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2437824315460719139}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 74cd22e2bd21cc544801368fbc595167, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 3.1499999, y: 5.0216146}
-  m_Direction: 0
 --- !u!50 &2437824315460719143
 Rigidbody2D:
   serializedVersion: 4
@@ -425,25 +409,119 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2437824315460719141
-MonoBehaviour:
+--- !u!70 &877596665
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2437824315460719139}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010cb80ed7012c64b8dd577c70bc7af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  climbForce: 5
-  detectionDistance: 0.2
-  fartEffect: {fileID: 2437824313698332872}
-  speedEffect: {fileID: 2437824314870542541}
-  speedBoostDuration: 0.3
---- !u!114 &293466885
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.21326447, y: -0.00000023841858}
+  m_Size: {x: 3.713417, y: 5.0216155}
+  m_Direction: 0
+--- !u!82 &877596653
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437824315460719139}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.119
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &877596660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,11 +530,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2437824315460719139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffbf1297748c5df4c90e7240ba169f75, type: 3}
+  m_Script: {fileID: 11500000, guid: c22c34bf01f26c0428baa84b1540492b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 3
-  moveSpeed: 5
+  moveSpeed: 4.5
   UpKey: 273
   DownKey: 274
   countdownText: {fileID: 0}
@@ -465,8 +543,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  laser: {fileID: 0}
   fartEffect: {fileID: 2437824313698332872}
   speedEffect: {fileID: 2437824314870542541}
-  fallingObjectPrefab: {fileID: 0}
-  spawnHeight: 5
   speedBoostDuration: 0.3
+  fartSound: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
+  paperSound: {fileID: 8300000, guid: 89014a5abe7f5b943938167936c0ebf1, type: 3}
+  trapSound: {fileID: 8300000, guid: f688c373d622aa84fb108e6fb0ffb7c5, type: 3}

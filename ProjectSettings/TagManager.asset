@@ -10,6 +10,11 @@ TagManager:
   - Paper
   - Bird
   - Trap
+  - bomb
+  - reverse
+  - pushBack
+  - secret
+  - shield
   layers:
   - Default
   - TransparentFX
