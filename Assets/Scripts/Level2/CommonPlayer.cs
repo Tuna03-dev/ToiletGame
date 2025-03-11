@@ -18,10 +18,9 @@ public class CommonPlayer : MonoBehaviour
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
+    public GameObject laser;
     public GameObject fartEffect;
     public GameObject speedEffect;
-    public GameObject fallingObjectPrefab; // Object rơi xuống
-    public float spawnHeight = 5f;
     public float speedBoostDuration = 1f;
     private bool isSpeedBoosted = false;
     private CapsuleCollider2D capsuleCollider2D;
@@ -36,7 +35,7 @@ public class CommonPlayer : MonoBehaviour
     {
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Lấy Animator component
+        animator = GetComponent<Animator>();
         rb.gravityScale = gravityScale;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.velocity = Vector2.zero;
@@ -64,7 +63,7 @@ public class CommonPlayer : MonoBehaviour
     IEnumerator CountdownAndStart()
     {
         countdownText.gameObject.SetActive(true); // Hiện UI đếm ngược
-        for (int i = 1; i > 0; i--)
+        for (int i = 2; i > 0; i--)
         {
             yield return new WaitForSecondsRealtime(1f); // Chờ 1 giây (không bị ảnh hưởng bởi Time.timeScale)
         }
@@ -75,6 +74,11 @@ public class CommonPlayer : MonoBehaviour
         countdownText.gameObject.SetActive(false); // Ẩn UI khi game bắt đầu
         Time.timeScale = 1; // Bắt đầu game
         isGameStarted = true;
+        laser.SetActive(false);
+        if (animator != null)
+        {
+            animator.SetBool("run", true); // Chuyển sang trạng thái "Run"
+        }
     }
 
     void Update()
@@ -85,7 +89,7 @@ public class CommonPlayer : MonoBehaviour
         if (IsObstacleAhead())
         {
             isMoving = false;
-            rb.velocity = new Vector2(0, rb.velocity.y);
+           
         }
         else
         {
@@ -146,33 +150,52 @@ public class CommonPlayer : MonoBehaviour
 
     bool IsObstacleAhead()
     {
-        return Physics2D.Raycast(frontCheck.position, Vector2.right, 0.2f, groundLayer);
+        float radius = 0.3f; // Bán kính hình tròn, bạn có thể điều chỉnh theo nhu cầu
+        RaycastHit2D hit = Physics2D.CircleCast(frontCheck.position, radius, Vector2.right, 0.2f, groundLayer);
+
+        return hit.collider != null;
     }
 
     void CheckGameOver()
     {
-        float cameraX = Camera.main.transform.position.x;
-        if (transform.position.x < cameraX - 17f) GameOver();
-
-        float cameraY = Camera.main.transform.position.y;
-        float screenHeight = Camera.main.orthographicSize;
-        if (transform.position.y > cameraY + screenHeight + 3f || transform.position.y < cameraY - screenHeight - 2f)
-        {
-            GameOver();
-        }
+        
     }
 
-    void GameOver()
+    public void GameOver()
     {
         isGameOver = true;
         rb.velocity = Vector2.zero;
-        Time.timeScale = 0;
 
+        // Dừng nhân vật và tắt hiệu ứng
+        animator.SetBool("run", false);
+        if (fartEffect != null) fartEffect.SetActive(false);
+        if (speedEffect != null) speedEffect.SetActive(false);
+
+        // Hiển thị màn hình Game Over (bạn có thể thêm UI trong scene của mình)
+        // Ví dụ: gameOverPanel.SetActive(true); (Đảm bảo bạn có một UI Panel cho game over)
+
+        // Đợi vài giây rồi restart game hoặc chuyển màn chơi
+        Invoke("RestartGame", 2f);  // 2s sau sẽ gọi RestartGame
     }
+
+
 
     public void RestartGame()
     {
-        Time.timeScale = 1;
+        // Khôi phục lại các thông số ban đầu
+        isGameOver = false;
+        isGameStarted = false;
+        moveSpeed = originalSpeed;
+
+        // Reset vị trí, tốc độ và các trạng thái
+        transform.position = new Vector2(0, 0); // Đặt lại vị trí nhân vật (hoặc set theo yêu cầu)
+        rb.velocity = Vector2.zero; // Reset vận tốc
+        rb.gravityScale = gravityScale; // Reset gravity
+        transform.rotation = Quaternion.identity; // Reset rotation
+
+        
+
+        // Load lại scene hiện tại
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -247,41 +270,16 @@ public class CommonPlayer : MonoBehaviour
 
             // Gọi object rơi sau khi player đã dừng lại
             Invoke("SpawnFallingObject", 1.2f);
+            GameOver();
         }
     }
 
-    void SpawnFallingObject()
-    {
-        if (fallingObjectPrefab != null)
-        {
-            Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
-            GameObject fallingObject = Instantiate(fallingObjectPrefab, spawnPosition, Quaternion.identity);
 
-            // Thêm Rigidbody2D để rơi tự nhiên
-            Rigidbody2D rb = fallingObject.GetComponent<Rigidbody2D>();
-            if (rb == null)
-            {
-                rb = fallingObject.AddComponent<Rigidbody2D>();
-            }
-            rb.gravityScale = 2; // Điều chỉnh tốc độ rơi theo ý bạn
-        }
-    }
-
-    // Hàm để camera focus vào nhân vật theo trục X
-    void FocusCameraOnPlayer()
-    {
-        Vector3 targetPosition = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
-        Camera.main.transform.position = targetPosition;
-    }
-
-
-
-    // Phương thức để dừng nhân vật lại
     void StopPlayer()
     {
         moveSpeed = 0;
         rb.velocity = Vector2.zero;
-        FocusCameraOnPlayer();
+        
     }
 
 
