@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CommonPlayer : MonoBehaviour
 {
+    public float countdownTime = 3.0f;
     public float gravityScale = 3.0f;
     public float moveSpeed = 5f;
     public KeyCode UpKey;
@@ -14,7 +15,6 @@ public class CommonPlayer : MonoBehaviour
     private bool isGameOver = false;
     private bool isGameStarted = false;
     private bool isMoving = true;
-    public Text countdownText;
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
@@ -30,9 +30,14 @@ public class CommonPlayer : MonoBehaviour
     private AudioSource audioSource;
     private Animator animator;
     public AudioClip trapSound;
-
+    public GameObject gameOverCanvas;
+    public GameObject sparkleEffect;
     void Start()
     {
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(false);
+        }
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -42,9 +47,9 @@ public class CommonPlayer : MonoBehaviour
         originalSpeed = moveSpeed;
         audioSource = GetComponent<AudioSource>();
 
-        if (fartEffect != null)
+        if (sparkleEffect != null)
         {
-            fartEffect.SetActive(false);
+            sparkleEffect.SetActive(false);
         }
         if (fartEffect != null)
         {
@@ -56,34 +61,35 @@ public class CommonPlayer : MonoBehaviour
         {
             speedEffect.SetActive(false);
         }
-        Time.timeScale = 0;
+
         StartCoroutine(CountdownAndStart()); // Đếm ngược rồi bắt đầu game
     }
 
     IEnumerator CountdownAndStart()
     {
-        countdownText.gameObject.SetActive(true); // Hiện UI đếm ngược
-        for (int i = 2; i > 0; i--)
+        // Đếm ngược mà không sử dụng Time.timeScale, sử dụng WaitForSecondsRealtime
+        
+        while (countdownTime > 0)
         {
-            yield return new WaitForSecondsRealtime(1f); // Chờ 1 giây (không bị ảnh hưởng bởi Time.timeScale)
+            countdownTime -= Time.unscaledDeltaTime;  // Dùng Time.unscaledDeltaTime thay vì Time.deltaTime
+            yield return null;  // Tiếp tục lặp cho đến khi đếm ngược xong
         }
 
-        countdownText.text = "GO!";
-        yield return new WaitForSecondsRealtime(1f);
-
-        countdownText.gameObject.SetActive(false); // Ẩn UI khi game bắt đầu
-        Time.timeScale = 1; // Bắt đầu game
+        // Sau khi đếm xong
         isGameStarted = true;
         laser.SetActive(false);
         if (animator != null)
         {
-            animator.SetBool("run", true); // Chuyển sang trạng thái "Run"
+            Debug.Log("Run");
+            animator.SetBool("run", true);
         }
     }
 
+
+
     void Update()
     {
-        if (!isGameStarted || isGameOver) return;
+        if (!isGameStarted || isGameOver || Time.timeScale == 0) return;
 
         // Kiểm tra nếu nhân vật va vào tile gồ ghề phía trước
         if (IsObstacleAhead())
@@ -171,33 +177,18 @@ public class CommonPlayer : MonoBehaviour
         if (fartEffect != null) fartEffect.SetActive(false);
         if (speedEffect != null) speedEffect.SetActive(false);
 
-        // Hiển thị màn hình Game Over (bạn có thể thêm UI trong scene của mình)
-        // Ví dụ: gameOverPanel.SetActive(true); (Đảm bảo bạn có một UI Panel cho game over)
-
-        // Đợi vài giây rồi restart game hoặc chuyển màn chơi
-        Invoke("RestartGame", 2f);  // 2s sau sẽ gọi RestartGame
-    }
-
-
-
-    public void RestartGame()
-    {
-        // Khôi phục lại các thông số ban đầu
-        isGameOver = false;
-        isGameStarted = false;
-        moveSpeed = originalSpeed;
-
-        // Reset vị trí, tốc độ và các trạng thái
-        transform.position = new Vector2(0, 0); // Đặt lại vị trí nhân vật (hoặc set theo yêu cầu)
-        rb.velocity = Vector2.zero; // Reset vận tốc
-        rb.gravityScale = gravityScale; // Reset gravity
-        transform.rotation = Quaternion.identity; // Reset rotation
+        // Hiển thị Canvas GameOver
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
+        }
 
         
-
-        // Load lại scene hiện tại
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+
+
+ 
 
     void HideFartEffect()
     {
@@ -223,10 +214,32 @@ public class CommonPlayer : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+        if (other.gameObject.CompareTag("Teleport"))
+        {
+            Debug.Log("Player va vào Teleport!");
+
+            // Ẩn nhân vật
+            gameObject.SetActive(false);
+
+            if (sparkleEffect != null)
+            {
+                sparkleEffect.transform.position = transform.position; // Đặt vị trí của hiệu ứng tại vị trí của player
+                sparkleEffect.SetActive(true);
+                AudioSource sparkleEffectAudio = sparkleEffect.GetComponent<AudioSource>();
+                if (sparkleEffectAudio != null)
+                {
+                    sparkleEffectAudio.Play(); 
+                }
+            }
+
+
+        }
 
 
 
     }
+    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bird"))

@@ -15,6 +15,7 @@ TagManager:
   - pushBack
   - secret
   - shield
+  - Teleport
   layers:
   - Default
   - TransparentFX
