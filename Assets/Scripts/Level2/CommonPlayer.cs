@@ -213,7 +213,7 @@ public class CommonPlayer : MonoBehaviour
             originalSpeed = moveSpeed;
             moveSpeed = -3;
 
-            Invoke("RestoreMoveSpeed", 0.5f);
+            Invoke("RestoreMoveSpeed", 0.3f);
         }
 
         if (collision.gameObject.CompareTag("Trap"))
