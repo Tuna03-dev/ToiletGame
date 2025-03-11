@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
-    public GameObject fartEffect; // Hiệu ứng fart (gán trong Inspector)
-    public GameObject speedEffect; // Hiệu ứng khi tăng tốc (gán trong Inspector)
+    public GameObject fartEffect; 
+    public GameObject speedEffect; 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -135,10 +135,7 @@ bool IsOnGround()
             GameOver();
         }
     }
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    isMoving = false;
-    //}
+    
 
     void GameOver()
     {
