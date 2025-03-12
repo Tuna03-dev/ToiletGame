@@ -175,7 +175,7 @@ public class Controller2Player : MonoBehaviour
     void CheckGameOver()
     {
         float cameraX = Camera.main.transform.position.x;
-        if (transform.position.x < cameraX - 17f) GameOver();
+        if (transform.position.x < cameraX - 15f) GameOver();
 
         float cameraY = Camera.main.transform.position.y;
         float screenHeight = Camera.main.orthographicSize;
