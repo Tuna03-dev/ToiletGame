@@ -130,6 +130,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1770470527155380908, guid: 16f433e9ad6fa5c498adeb04d0ccd3e9, type: 3}
+      propertyPath: UpKey
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770470527155380908, guid: 16f433e9ad6fa5c498adeb04d0ccd3e9, type: 3}
+      propertyPath: DownKey
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770470527155380908, guid: 16f433e9ad6fa5c498adeb04d0ccd3e9, type: 3}
       propertyPath: winText
       value: 
       objectReference: {fileID: 1675917902}
