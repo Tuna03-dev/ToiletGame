@@ -2273,7 +2273,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -621412919
+  m_SortingLayerID: -903738377
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -2535,6 +2535,14 @@ PrefabInstance:
     - target: {fileID: 8256496273934094622, guid: 00c0dfaab7c51ec4c81574753d20b7d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814495050728997727, guid: 00c0dfaab7c51ec4c81574753d20b7d2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814495050728997727, guid: 00c0dfaab7c51ec4c81574753d20b7d2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c0dfaab7c51ec4c81574753d20b7d2, type: 3}
