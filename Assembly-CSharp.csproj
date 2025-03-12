@@ -101,6 +101,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\TrapRaise.cs" />
     <Compile Include="Assets\Sprites\Scripts\2PlayerCompetition\ChunkSpawner.cs" />
+    <Compile Include="Assets\VictorySound.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\NewDevelop\Scripts\GameManager.cs" />
@@ -118,11 +119,14 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\VolumSetting.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Assets\VictorySound.cs" />
     <Compile Include="Assets\BallScroll.cs" />
     <Compile Include="Assets\TrapTrigger.cs" />
     <Compile Include="Assets\SoundManager.cs" />
     <Compile Include="Assets\TrapDisappear.cs" />
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
