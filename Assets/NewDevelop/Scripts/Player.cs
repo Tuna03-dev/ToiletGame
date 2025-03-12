@@ -34,10 +34,14 @@ public class Player : MonoBehaviour
     public AudioClip audioTriggerTrapItem;
 
     public AudioClip audioTriggerRewardItem;
+    public AudioClip audioBool;
+    public AudioClip audioBird;
+    public AudioClip audioHp;
 
     public AudioSource audioSource;
 
     private float originalSpeed;
+    private bool isGrounded = false;
 
 
     void Start()
@@ -63,6 +67,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (!IsGameStarted || isGameOver) return;
+        isGrounded = IsOnGround();
 
 
         // Kiểm tra nếu nhân vật va vào tile gồ ghề phía trước
@@ -82,13 +87,16 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(UpKey))
+        if (isGrounded)
         {
-            ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
-        }
-        else if (Input.GetKeyDown(DownKey))
-        {
-            ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
+            if (Input.GetKeyDown(UpKey))
+            {
+                ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
+            }
+            else if (Input.GetKeyDown(DownKey))
+            {
+                ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
+            }
         }
 
 
@@ -134,11 +142,11 @@ public class Player : MonoBehaviour
     void CheckGameOver()
     {
         float cameraX = Camera.main.transform.position.x;
-        if (transform.position.x < cameraX - 17f) GameOver();
+        if (transform.position.x < cameraX - 13f) GameOver();
 
         float cameraY = Camera.main.transform.position.y;
         float screenHeight = Camera.main.orthographicSize;
-        if (transform.position.y > cameraY + screenHeight + 3f || transform.position.y < cameraY - screenHeight - 2f)
+        if (transform.position.y > cameraY + screenHeight + 1f || transform.position.y < cameraY - screenHeight - 1f)
         {
             GameOver();
         }
@@ -157,38 +165,67 @@ public class Player : MonoBehaviour
         if (!IsGameStarted) 
             return;
 
-        if (collision.name.Contains("PaperToilet"))
+        if (collision.CompareTag("Paper"))
         {
             if (!isBoosting)
             {
-
+                Destroy(collision.gameObject);
                 isBoosting = true;
+                PlayAudio(audioBool);
                 speedEffect.SetActive(true);
                 moveSpeed *= boostSpeed;
 
                 StartCoroutine(IEWaitBoost());
 
-                Destroy(collision.gameObject);
+                
             }
         }
-        if (collision.name.Contains("MetalTrap"))
+        if(collision.CompareTag("secret"))
+        {
+            Destroy(collision.gameObject);
+            PlayAudio(audioHp);
+            GameManager.Instance.IncreaseHp();
+        }
+        if (collision.CompareTag("Trap"))
         {
             PlayAudio(audioTriggerTrapItem);
+            rb.velocity = Vector2.zero;
+
+            
+            rb.AddForce(new Vector2(-5f, 5f), ForceMode2D.Impulse);
+            isMoving = false;
+            Invoke("AllowMoveAfterHit", 0.5f);
 
             GameManager.Instance.TriggerOstacle();
         }
-        if (collision.name.Contains("RewardItem"))
+        if (collision.CompareTag("Bird"))
         {
+            Debug.Log("Player va vào bird!");
+            PlayAudio(audioBird);
+            originalSpeed = moveSpeed;
+            moveSpeed = -2;
+            GameManager.Instance.TriggerOstacle();
+
+            Invoke("RestoreMoveSpeed", 0.5f);
+        }
+        if (collision.CompareTag("Reward"))
+        {
+            Destroy(collision.gameObject);
             PlayAudio(audioTriggerRewardItem);
 
             GameManager.Instance.RewardItem();
 
-            Destroy(collision.gameObject);
+            
         }
     }
 
     public void Stop()
     {
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D is null in Player.Stop()");
+            return;
+        }
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
     }
@@ -204,7 +241,7 @@ public class Player : MonoBehaviour
 
     public void PlayAudio(AudioClip audio)
     {
-        audioSource.clip = audio;
+        audioSource.PlayOneShot(audio);
         audioSource.Play();
     }
 }

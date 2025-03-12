@@ -533,11 +533,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22c34bf01f26c0428baa84b1540492b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownTime: 3
   gravityScale: 3
   moveSpeed: 4.5
   UpKey: 273
   DownKey: 274
-  countdownText: {fileID: 0}
   groundCheck: {fileID: 455910637}
   frontCheck: {fileID: 1943808451}
   groundLayer:
@@ -549,4 +549,10 @@ MonoBehaviour:
   speedBoostDuration: 0.3
   fartSound: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
   paperSound: {fileID: 8300000, guid: 89014a5abe7f5b943938167936c0ebf1, type: 3}
+  victorySound: {fileID: 0}
   trapSound: {fileID: 8300000, guid: f688c373d622aa84fb108e6fb0ffb7c5, type: 3}
+  gameOverCanvas: {fileID: 0}
+  gameNextCanvas: {fileID: 0}
+  gameWinCanvas: {fileID: 0}
+  sparkleEffect: {fileID: 0}
+  pauseButton: {fileID: 0}

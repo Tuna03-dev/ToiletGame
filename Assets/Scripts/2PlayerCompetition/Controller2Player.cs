@@ -14,7 +14,8 @@ public class Controller2Player : MonoBehaviour
     public KeyCode DownKey;
     private Rigidbody2D rb;
     private bool isGameOver = false;
-    private bool isGameStarted = false;
+    [HideInInspector]
+    public bool isGameStarted = false;
     private bool isMoving = true;
     public Text countdownText; // UI hiển thị đếm ngược
     public Transform groundCheck;
@@ -31,6 +32,16 @@ public class Controller2Player : MonoBehaviour
     private bool hasShield = false;
     public Text winText;
     public GameObject winPopUp;
+
+    // 🎵 Âm thanh
+    private AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip pickupSound;
+    public AudioClip speedUpSound;
+    public AudioClip victorySound;
+    // Nhan vat
+    public SpriteRenderer spriteCharacter;
+    public Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +58,8 @@ public class Controller2Player : MonoBehaviour
         if (pushBackEffect != null) pushBackEffect.SetActive(false);
         if (shieldEffect != null) shieldEffect.SetActive(false);
         if (winPopUp != null) winPopUp.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     IEnumerator CountdownAndStart()
@@ -110,6 +123,7 @@ public class Controller2Player : MonoBehaviour
             fartEffect.SetActive(true);
             StartCoroutine(HideEffectCoroutine(fartEffect, 0.5f)); // Ẩn sau 0.5 giây
         }
+        PlaySound(jumpSound);
     }
 
     
@@ -173,12 +187,15 @@ public class Controller2Player : MonoBehaviour
 
     void GameOver()
     {
+        
         isGameOver = true;
         rb.velocity = Vector2.zero;
         Time.timeScale = 0;
         if (opponent != null)
         {
             opponent.Win();
+            PlaySound(victorySound);
+            
         }
     }
 
@@ -213,6 +230,7 @@ public class Controller2Player : MonoBehaviour
     {
         if (collision.CompareTag("reverse"))
         {
+            PlaySound(pickupSound);
             ApplyEffectToOpponent(() =>
             {
                 opponent?.SwapGravity(); // Đảo trọng lực đối thủ
@@ -221,6 +239,7 @@ public class Controller2Player : MonoBehaviour
         }
         else if (collision.CompareTag("pushBack"))
         {
+            PlaySound(pickupSound);
             ApplyEffectToOpponent(() =>
             {
                 opponent?.pushBackEffect.SetActive(true);
@@ -231,16 +250,18 @@ public class Controller2Player : MonoBehaviour
         }
         else if (collision.CompareTag("bomb"))
         {
+            PlaySound(pickupSound);
             ApplyEffectToOpponent(() =>
             {
                 opponent?.bombEffect.SetActive(true);
-                StartCoroutine(HideEffectCoroutine(opponent?.bombEffect, 0.3f));
+                StartCoroutine(HideEffectCoroutine(opponent?.bombEffect, 0.5f));
                 StartCoroutine(ZeroGravityEffect(opponent, 1f)); // Không trọng lực đối thủ trong 3 giây
             });
             Destroy(collision.gameObject);
         }
         else if (collision.CompareTag("Paper"))
         {
+            PlaySound(speedUpSound);
             speedEffect.SetActive(true);
             StartCoroutine(HideEffectCoroutine(speedEffect, 0.3f));
             StartCoroutine(SpeedBoostEffect(1f));
@@ -253,6 +274,7 @@ public class Controller2Player : MonoBehaviour
         }
         else if (collision.CompareTag("secret"))
         {
+            PlaySound(pickupSound);
             ApplyRandomEffectToOpponent();
             Destroy(collision.gameObject);
         }
@@ -275,10 +297,8 @@ public class Controller2Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Chan");
             // Xác định hướng đẩy
             Vector2 pushDirection = (transform.position.x > collision.transform.position.x) ? Vector2.right : Vector2.left;
-            Debug.Log(pushDirection);
             // Đẩy cả hai người chơi
             Push(pushDirection.x);
             opponent.Push(-pushDirection.x);
@@ -379,6 +399,15 @@ public class Controller2Player : MonoBehaviour
                 hasShield = true;
                 shieldEffect.SetActive(true);
                 break;
+        }
+    }
+
+    // 📌 Hàm phát âm thanh
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 }

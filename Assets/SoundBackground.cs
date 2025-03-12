@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Thêm namespace để sử dụng SceneManager
 
 public class SoundBackground : MonoBehaviour
 {
     private static SoundBackground instance;
     private AudioSource audioSource;
+    private CommonPlayer commonPlayer;
 
     void Awake()
     {
@@ -27,6 +29,46 @@ public class SoundBackground : MonoBehaviour
         {
             audioSource.loop = true;
             audioSource.Play();
+        }
+
+        // Lấy tham chiếu đến CommonPlayer
+        commonPlayer = FindObjectOfType<CommonPlayer>();
+
+        // Đăng ký sự kiện khi scene thay đổi
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // Hủy đăng ký sự kiện khi object bị hủy
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Hàm này sẽ được gọi mỗi khi một scene mới được load
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Kiểm tra nếu nhạc đang tắt thì bật lại
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+    }
+
+    // Kiểm tra nếu người chơi thắng và dừng nhạc
+    void Update()
+    {
+        if (commonPlayer != null && commonPlayer.CheckVictory())
+        {
+            OnPlayerWin();
+        }
+    }
+
+    // Gọi hàm này khi người chơi thắng
+    private void OnPlayerWin()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop(); // Dừng nhạc khi người chơi thắng
         }
     }
 }
