@@ -1658,7 +1658,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -621412919
+  m_SortingLayerID: -903738377
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -1813,6 +1813,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
+      objectReference: {fileID: 0}
     - target: {fileID: 6150331421475151767, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
       propertyPath: m_Name
       value: FTrap (1)
@@ -1876,6 +1884,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 4420672921234965717, guid: a12707f00c59ba046b5e74bf98006ddf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420672921234965717, guid: a12707f00c59ba046b5e74bf98006ddf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
+      objectReference: {fileID: 0}
     - target: {fileID: 4420672921234965719, guid: a12707f00c59ba046b5e74bf98006ddf, type: 3}
       propertyPath: m_Name
       value: MTrap (1)
@@ -1938,6 +1954,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 4420672921234965717, guid: a12707f00c59ba046b5e74bf98006ddf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420672921234965717, guid: a12707f00c59ba046b5e74bf98006ddf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
+      objectReference: {fileID: 0}
     - target: {fileID: 4420672921234965719, guid: a12707f00c59ba046b5e74bf98006ddf, type: 3}
       propertyPath: m_Name
       value: MTrap
@@ -1999,6 +2023,14 @@ PrefabInstance:
     - target: {fileID: 6150331421475151764, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
       objectReference: {fileID: 0}
     - target: {fileID: 6150331421475151767, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
       propertyPath: m_Name
@@ -2063,6 +2095,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
+      objectReference: {fileID: 0}
     - target: {fileID: 6150331421475151767, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
       propertyPath: m_Name
       value: FTrap (2)
@@ -2125,6 +2165,14 @@ PrefabInstance:
     - target: {fileID: 6150331421475151764, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150331421475151765, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 241507201
       objectReference: {fileID: 0}
     - target: {fileID: 6150331421475151767, guid: a5d0e028ec287824eb3c355e68429fad, type: 3}
       propertyPath: m_Name
