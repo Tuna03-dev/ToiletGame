@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
     {
         isGameOver = true;
         rb.velocity = Vector2.zero;
-        GameManager.Instance.RestartGame();
+        
     }
 
     private bool isBoosting;

@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     public AudioClip backgroundMusic;
 
     public TextMeshProUGUI txtCountReward;
+    public GameObject gameOverCanvas;
+    public GameObject pauseButton;
+    public GameObject pauseGame;
 
     public static GameManager Instance { get; private set; }
 
@@ -153,10 +156,16 @@ public class GameManager : MonoBehaviour
         loseGO.SetActive(true);
 
         PlayAudio(audioLose);
+        
 
         yield return new WaitForSecondsRealtime(3f);
 
-        SceneManager.LoadScene("Map2Player");
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
+            pauseButton.SetActive(false);
+            pauseGame.SetActive(false);
+        }
     }
     // ham tang mau cho nhan vat
     public void IncreaseHp()
@@ -218,6 +227,7 @@ public class GameManager : MonoBehaviour
         chunkSpawner.IsUpdateChunk = false;
 
         winGO.SetActive(true);
+        pauseGame.SetActive(false);
 
         GameObject pfx = Resources.Load<GameObject>("Effect/EffectCookieJar");
         Instantiate(pfx).transform.position = Camera.main.transform.position;
