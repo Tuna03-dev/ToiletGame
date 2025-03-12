@@ -32,6 +32,7 @@ public class Controller2Player : MonoBehaviour
     private bool hasShield = false;
     public Text winText;
     public GameObject winPopUp;
+    public GameObject pauseButton;
 
     // 🎵 Âm thanh
     private AudioSource audioSource;
@@ -175,7 +176,7 @@ public class Controller2Player : MonoBehaviour
     void CheckGameOver()
     {
         float cameraX = Camera.main.transform.position.x;
-        if (transform.position.x < cameraX - 17f) GameOver();
+        if (transform.position.x < cameraX - 13f) GameOver();
 
         float cameraY = Camera.main.transform.position.y;
         float screenHeight = Camera.main.orthographicSize;
@@ -190,12 +191,11 @@ public class Controller2Player : MonoBehaviour
         
         isGameOver = true;
         rb.velocity = Vector2.zero;
-        Time.timeScale = 0;
         if (opponent != null)
         {
             opponent.Win();
             PlaySound(victorySound);
-            
+            pauseButton.SetActive(false);
         }
     }
 
