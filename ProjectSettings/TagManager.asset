@@ -10,14 +10,17 @@ TagManager:
   - reverse
   - secret
   - shield
+  - Teleport
+  - Toilet
   - Trap
   - Reward
   - Bird
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
