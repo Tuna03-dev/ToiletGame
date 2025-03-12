@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public AudioClip audioWin;
     public AudioClip audioLose;
+    public AudioClip backgroundMusic;
 
     public TextMeshProUGUI txtCountReward;
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         uiChoosePlayer.SetActive(true);
+        PlayBackgroundMusic();
 
         listButtonChoose.ForEach(x =>
         {
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour
 
         chunkSpawner.IsUpdateChunk = false;
 
-        tmp.text = "Choose Character 1";
+        tmp.text = "Choose Player 1";
         currentHp = MAX_HP;
     }
 
@@ -87,7 +89,7 @@ public class GameManager : MonoBehaviour
 
         if(countChoose == 1)
         {
-            tmp.text = "Choose Character 2";
+            tmp.text = "Choose Player 2";
 
             int indexCharacter = int.Parse(button.name);
 
@@ -114,9 +116,9 @@ public class GameManager : MonoBehaviour
 
         uiChoosePlayer.SetActive(false);
 
-        countdownText.gameObject.SetActive(true);
-        for (int i = 1; i > 0; i--)
+        for (int i = 3; i > 0; i--)
         {
+            countdownText.text = i.ToString();
             yield return new WaitForSecondsRealtime(1f);
         }
 
@@ -155,6 +157,20 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(3f);
 
         SceneManager.LoadScene("Map2Player");
+    }
+    // ham tang mau cho nhan vat
+    public void IncreaseHp()
+    {
+        currentHp += hpDecreaseRate;
+
+        if (currentHp >= MAX_HP)
+        {
+            currentHp = MAX_HP;
+        }
+
+        txtHp.text = currentHp.ToString();
+
+        sliderHp.value = currentHp / MAX_HP;
     }
 
     public void TriggerOstacle()
@@ -214,8 +230,17 @@ public class GameManager : MonoBehaviour
 
     public void PlayAudio(AudioClip audio)
     {
-        audioSource.clip = audio;
-        audioSource.Play();
+        audioSource.PlayOneShot(audio);
+        
+    }
+    private void PlayBackgroundMusic()
+    {
+        if (backgroundMusic != null)
+        {
+            audioSource.clip = backgroundMusic;
+            audioSource.loop = true; // Lặp lại nhạc nền
+            audioSource.Play();
+        }
     }
 }
 
