@@ -4,28 +4,26 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Box
-  - Scroll
-  - Paper
-  - Bird
-  - Trap
   - bomb
-  - reverse
+  - Paper
   - pushBack
+  - reverse
   - secret
   - shield
   - Teleport
   - Toilet
+  - Trap
+  - Reward
+  - Bird
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
-  - Ward
+  - 
   - 
   - 
   - 
@@ -54,21 +52,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 3673554377
+  - name: BackGround
+    uniqueID: 3391228919
     locked: 0
   - name: Ground
-    uniqueID: 1160648279
+    uniqueID: 896970531
     locked: 0
   - name: Top
-    uniqueID: 1012407385
+    uniqueID: 2596440839
     locked: 0
   - name: Player
-    uniqueID: 317911623
+    uniqueID: 3761926647
     locked: 0
   - name: Reward
-    uniqueID: 3580902361
+    uniqueID: 2125934833
     locked: 0
   - name: Trap
-    uniqueID: 3508559753
+    uniqueID: 241507201
     locked: 0

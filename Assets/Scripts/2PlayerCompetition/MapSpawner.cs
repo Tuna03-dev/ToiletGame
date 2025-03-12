@@ -13,7 +13,8 @@ public class MapSpawner : MonoBehaviour
     private Queue<GameObject> activeChunks = new Queue<GameObject>(); // Hàng đợi chunk đang hiển thị
     private List<GameObject> chunkPool = new List<GameObject>(); // Pool chứa các chunk có sẵn
     private GameObject lastChunk; // Chunk cuối cùng đã spawn
-
+    [HideInInspector]
+    public bool IsUpdateChunk = false;
     void Start()
     {
         // Tạo pool từ danh sách prefab ban đầu
@@ -40,6 +41,9 @@ public class MapSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!IsUpdateChunk)
+            return;
+
         MoveChunks();
 
         // Xử lý chunk bị ra khỏi màn hình

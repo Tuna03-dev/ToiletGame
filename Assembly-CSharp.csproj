@@ -117,6 +117,8 @@
     <Compile Include="Assets\VolumSetting.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\VictorySound.cs" />
+    <Compile Include="Assets\Scripts\2PlayerCompetition\GameManager2PlayerCom.cs" />
+    <Compile Include="Assets\BirdScripts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
