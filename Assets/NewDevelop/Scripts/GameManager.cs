@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public AudioClip audioWin;
     public AudioClip audioLose;
+    public AudioClip backgroundMusic;
 
     public TextMeshProUGUI txtCountReward;
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         uiChoosePlayer.SetActive(true);
+        PlayBackgroundMusic();
 
         listButtonChoose.ForEach(x =>
         {
@@ -156,6 +158,20 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene("Map2Player");
     }
+    // ham tang mau cho nhan vat
+    public void IncreaseHp()
+    {
+        currentHp += hpDecreaseRate;
+
+        if (currentHp >= MAX_HP)
+        {
+            currentHp = MAX_HP;
+        }
+
+        txtHp.text = currentHp.ToString();
+
+        sliderHp.value = currentHp / MAX_HP;
+    }
 
     public void TriggerOstacle()
     {
@@ -214,8 +230,17 @@ public class GameManager : MonoBehaviour
 
     public void PlayAudio(AudioClip audio)
     {
-        audioSource.clip = audio;
-        audioSource.Play();
+        audioSource.PlayOneShot(audio);
+        
+    }
+    private void PlayBackgroundMusic()
+    {
+        if (backgroundMusic != null)
+        {
+            audioSource.clip = backgroundMusic;
+            audioSource.loop = true; // Lặp lại nhạc nền
+            audioSource.Play();
+        }
     }
 }
 
