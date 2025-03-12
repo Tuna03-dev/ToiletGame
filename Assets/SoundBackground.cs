@@ -9,6 +9,7 @@ public class SoundBackground : MonoBehaviour
     private AudioSource audioSource;
     private CommonPlayer commonPlayer;
 
+
     void Awake()
     {
         // Kiểm tra xem có đối tượng nào đã tồn tại chưa
