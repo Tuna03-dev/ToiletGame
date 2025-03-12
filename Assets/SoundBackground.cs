@@ -9,7 +9,6 @@ public class SoundBackground : MonoBehaviour
     private AudioSource audioSource;
     private CommonPlayer commonPlayer;
 
-
     void Awake()
     {
         // Kiểm tra xem có đối tượng nào đã tồn tại chưa
@@ -37,12 +36,14 @@ public class SoundBackground : MonoBehaviour
 
         // Đăng ký sự kiện khi scene thay đổi
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded; // Đăng ký sự kiện khi scene bị thoát
     }
 
     // Hủy đăng ký sự kiện khi object bị hủy
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded; // Hủy đăng ký sự kiện scene bị thoát
     }
 
     // Hàm này sẽ được gọi mỗi khi một scene mới được load
@@ -52,6 +53,16 @@ public class SoundBackground : MonoBehaviour
         if (audioSource != null && !audioSource.isPlaying)
         {
             audioSource.Play();
+        }
+    }
+
+    // Hàm này sẽ được gọi mỗi khi một scene bị thoát
+    private void OnSceneUnloaded(Scene scene)
+    {
+        // Dừng nhạc khi scene bị thoát
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
         }
     }
 
