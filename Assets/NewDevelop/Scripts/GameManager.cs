@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
         chunkSpawner.IsUpdateChunk = false;
 
-        tmp.text = "Choose Character 1";
+        tmp.text = "Choose Player 1";
         currentHp = MAX_HP;
     }
 
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
         if(countChoose == 1)
         {
-            tmp.text = "Choose Character 2";
+            tmp.text = "Choose Player 2";
 
             int indexCharacter = int.Parse(button.name);
 
@@ -116,9 +116,9 @@ public class GameManager : MonoBehaviour
 
         uiChoosePlayer.SetActive(false);
 
-        countdownText.gameObject.SetActive(true);
-        for (int i = 1; i > 0; i--)
+        for (int i = 3; i > 0; i--)
         {
+            countdownText.text = i.ToString();
             yield return new WaitForSecondsRealtime(1f);
         }
 
