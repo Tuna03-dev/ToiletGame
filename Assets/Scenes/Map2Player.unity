@@ -339,8 +339,9 @@ MonoBehaviour:
   audioSource: {fileID: 1413350261}
   audioWin: {fileID: 8300000, guid: 6aea7e0430b8ee54da8a985fc632a299, type: 3}
   audioLose: {fileID: 8300000, guid: 304420d1d28ca624e90aa3962a9d449a, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 3942584307db52549a7c153533a3df77, type: 3}
   txtCountReward: {fileID: 499991558}
-  WIN_REWARD_COUNT: 3
+  WIN_REWARD_COUNT: 10
 --- !u!4 &241888475
 Transform:
   m_ObjectHideFlags: 0
@@ -662,9 +663,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8338790763908137137, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137137, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -533040649
+      objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137141, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_Name
       value: Player1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137141, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137144, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: MinDistance
@@ -679,9 +692,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
-      propertyPath: moveSpeed
-      value: 0.8
+      propertyPath: UpKey
+      value: 119
       objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: DownKey
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioHp
+      value: 
+      objectReference: {fileID: 8300000, guid: e4643da1ac14c9f4d9c2a8d3e26248fc, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioBird
+      value: 
+      objectReference: {fileID: 8300000, guid: f688c373d622aa84fb108e6fb0ffb7c5, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioBool
+      value: 
+      objectReference: {fileID: 8300000, guid: 89014a5abe7f5b943938167936c0ebf1, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioFart
+      value: 
+      objectReference: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: moveSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioTriggerRewardItem
+      value: 
+      objectReference: {fileID: 8300000, guid: aab5ba14c11c980479b6cb16753cc618, type: 3}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -700,11 +741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.28
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1607,7 +1648,7 @@ MonoBehaviour:
   - {fileID: 4645254059981785466, guid: 4f3af97f6a8c2ba40bff1d6451d1200a, type: 3}
   chunkWidth: 32
   maxChunks: 2
-  moveSpeed: 3.5
+  moveSpeed: 4
 --- !u!1 &1090346255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2410,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3942584307db52549a7c153533a3df77, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4074,25 +4115,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8338790763908137137, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137137, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -533040649
+      objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137141, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137141, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137146, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioHp
+      value: 
+      objectReference: {fileID: 8300000, guid: e4643da1ac14c9f4d9c2a8d3e26248fc, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioBird
+      value: 
+      objectReference: {fileID: 8300000, guid: f688c373d622aa84fb108e6fb0ffb7c5, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioBool
+      value: 
+      objectReference: {fileID: 8300000, guid: 89014a5abe7f5b943938167936c0ebf1, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioFart
+      value: 
+      objectReference: {fileID: 8300000, guid: b7078d4ac574cfd408eedc918aec4f90, type: 3}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: moveSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338790763908137147, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
+      propertyPath: audioTriggerRewardItem
+      value: 
+      objectReference: {fileID: 8300000, guid: aab5ba14c11c980479b6cb16753cc618, type: 3}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.17
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.19
+      value: -3.02
       objectReference: {fileID: 0}
     - target: {fileID: 8338790763908137150, guid: 171b309e3d5505149972dc8af2a823b3, type: 3}
       propertyPath: m_LocalPosition.z

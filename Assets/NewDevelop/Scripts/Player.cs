@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     public AudioClip audioTriggerTrapItem;
 
     public AudioClip audioTriggerRewardItem;
+    public AudioClip audioBool;
+    public AudioClip audioBird;
+    public AudioClip audioHp;
 
     public AudioSource audioSource;
 
@@ -168,6 +171,7 @@ public class Player : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 isBoosting = true;
+                PlayAudio(audioBool);
                 speedEffect.SetActive(true);
                 moveSpeed *= boostSpeed;
 
@@ -176,18 +180,30 @@ public class Player : MonoBehaviour
                 
             }
         }
+        if(collision.CompareTag("secret"))
+        {
+            Destroy(collision.gameObject);
+            PlayAudio(audioHp);
+            GameManager.Instance.IncreaseHp();
+        }
         if (collision.CompareTag("Trap"))
         {
             PlayAudio(audioTriggerTrapItem);
+            rb.velocity = Vector2.zero;
+
+            
+            rb.AddForce(new Vector2(-5f, 5f), ForceMode2D.Impulse);
+            isMoving = false;
+            Invoke("AllowMoveAfterHit", 0.5f);
 
             GameManager.Instance.TriggerOstacle();
         }
         if (collision.CompareTag("Bird"))
         {
             Debug.Log("Player va vào bird!");
-
+            PlayAudio(audioBird);
             originalSpeed = moveSpeed;
-            moveSpeed = -3;
+            moveSpeed = -2;
             GameManager.Instance.TriggerOstacle();
 
             Invoke("RestoreMoveSpeed", 0.5f);
