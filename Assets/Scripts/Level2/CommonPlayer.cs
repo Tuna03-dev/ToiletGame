@@ -27,16 +27,30 @@ public class CommonPlayer : MonoBehaviour
     private float originalSpeed;
     public AudioClip fartSound;
     public AudioClip paperSound;
+    public AudioClip victorySound;
     private AudioSource audioSource;
     private Animator animator;
     public AudioClip trapSound;
     public GameObject gameOverCanvas;
+    public GameObject gameNextCanvas;
+    public GameObject gameWinCanvas;
     public GameObject sparkleEffect;
+    public GameObject pauseButton;
+    private bool isVictory;
     void Start()
     {
+        isVictory = false;
         if (gameOverCanvas != null)
         {
             gameOverCanvas.SetActive(false);
+        }
+        if (gameNextCanvas != null)
+        {
+            gameNextCanvas.SetActive(false);
+        }
+        if (gameWinCanvas != null)
+        {
+            gameWinCanvas.SetActive(false);
         }
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -125,8 +139,7 @@ public class CommonPlayer : MonoBehaviour
             Invoke("ResetSpeed", speedBoostDuration);
         }
 
-        // Kiểm tra game over
-        CheckGameOver();
+
     }
     void PlayFartEffect()
     {
@@ -162,9 +175,9 @@ public class CommonPlayer : MonoBehaviour
         return hit.collider != null;
     }
 
-    void CheckGameOver()
+   public bool CheckVictory()
     {
-        
+        return isVictory;
     }
 
     public void GameOver()
@@ -181,6 +194,7 @@ public class CommonPlayer : MonoBehaviour
         if (gameOverCanvas != null)
         {
             gameOverCanvas.SetActive(true);
+            pauseButton.SetActive(false);
         }
 
         
@@ -217,8 +231,7 @@ public class CommonPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Teleport"))
         {
             Debug.Log("Player va vào Teleport!");
-
-            // Ẩn nhân vật
+            
             gameObject.SetActive(false);
 
             if (sparkleEffect != null)
@@ -232,13 +245,24 @@ public class CommonPlayer : MonoBehaviour
                 }
             }
 
+            Invoke("ShowGameNextCanvas", 1f);
+            isVictory = true;
 
         }
 
 
 
     }
-    
+    void ShowGameNextCanvas()
+    {
+        
+       
+
+        if (gameNextCanvas != null)
+        {
+            gameNextCanvas.SetActive(true);
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -281,10 +305,22 @@ public class CommonPlayer : MonoBehaviour
             capsuleCollider2D.size = new Vector2(5.646687f, 2.417982f);
             capsuleCollider2D.offset = new Vector2(0.15F, 0.04399896f);
 
-            // Gọi object rơi sau khi player đã dừng lại
-            Invoke("SpawnFallingObject", 1.2f);
+            
             GameOver();
         }
+        if (collision.gameObject.CompareTag("Toilet"))
+        {
+            if (gameWinCanvas != null)
+            {
+                gameWinCanvas.SetActive(true);
+                pauseButton.SetActive(false);
+                isVictory = true;
+
+            }
+
+
+        }
+
     }
 
 

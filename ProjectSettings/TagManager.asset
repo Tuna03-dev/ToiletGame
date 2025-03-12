@@ -16,6 +16,7 @@ TagManager:
   - secret
   - shield
   - Teleport
+  - Toilet
   layers:
   - Default
   - TransparentFX

@@ -162,5 +162,4 @@ MonoBehaviour:
   dieEffectPrefab: {fileID: 0}
   mainCamera: {fileID: 0}
   zoomOutDuration: 4
-  zoomInSize: 5
   startSize: 4.5
