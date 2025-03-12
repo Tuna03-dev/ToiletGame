@@ -49,6 +49,10 @@ public class GameManager : MonoBehaviour
     public AudioClip audioWin;
     public AudioClip audioLose;
     public AudioClip backgroundMusic;
+    public GameObject gameOverCanvas;
+    public GameObject pauseButton;
+    public GameObject pauseGameButton;
+
 
     public TextMeshProUGUI txtCountReward;
 
@@ -80,24 +84,24 @@ public class GameManager : MonoBehaviour
         currentHp = MAX_HP;
     }
 
-    private int countChoose;  
+    private int countChoose;
 
 
     private void OnChoose(Button button)
     {
         countChoose++;
 
-        if(countChoose == 1)
+        if (countChoose == 1)
         {
             tmp.text = "Choose Player 2";
 
             int indexCharacter = int.Parse(button.name);
 
-           
+
             player1.spriteCharacter.sprite = dataPlayers[indexCharacter].sprite;
             player1.animator.runtimeAnimatorController = dataPlayers[indexCharacter].animator;
         }
-        else if(countChoose == 2)
+        else if (countChoose == 2)
         {
             int indexCharacter = int.Parse(button.name);
 
@@ -131,7 +135,6 @@ public class GameManager : MonoBehaviour
         player2.IsGameStarted = true;
         chunkSpawner.IsUpdateChunk = true;
     }
-
     bool isFailed = false;
     public void RestartGame()
     {
@@ -150,13 +153,17 @@ public class GameManager : MonoBehaviour
         player2.IsGameStarted = false;
         chunkSpawner.IsUpdateChunk = false;
 
-        loseGO.SetActive(true);
+        //loseGO.SetActive(true);
 
         PlayAudio(audioLose);
 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1f);
 
-        SceneManager.LoadScene("Map2Player");
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
+            pauseButton.SetActive(false);
+        }
     }
     // ham tang mau cho nhan vat
     public void IncreaseHp()
@@ -177,7 +184,7 @@ public class GameManager : MonoBehaviour
     {
         currentHp -= hpDecreaseRate;
 
-        if(currentHp <= 0)
+        if (currentHp <= 0)
         {
             currentHp = 0;
             RestartGame();
@@ -218,6 +225,7 @@ public class GameManager : MonoBehaviour
         chunkSpawner.IsUpdateChunk = false;
 
         winGO.SetActive(true);
+        pauseGameButton.SetActive(false);
 
         GameObject pfx = Resources.Load<GameObject>("Effect/EffectCookieJar");
         Instantiate(pfx).transform.position = Camera.main.transform.position;
@@ -231,7 +239,7 @@ public class GameManager : MonoBehaviour
     public void PlayAudio(AudioClip audio)
     {
         audioSource.PlayOneShot(audio);
-        
+
     }
     private void PlayBackgroundMusic()
     {
