@@ -15,11 +15,12 @@ TagManager:
   - Trap
   - Reward
   - Bird
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
