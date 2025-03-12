@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map2Player.unity
     guid: 72839b0faa30fe947a92ac0044521578
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SecretLevel.unity
     guid: c45a6be08eaa1614d9526bb93209507e
   m_configObjects: {}
