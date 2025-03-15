@@ -17,7 +17,7 @@ public class Controller2Player : MonoBehaviour
     [HideInInspector]
     public bool isGameStarted = false;
     private bool isMoving = true;
-    public Text countdownText; // UI hiển thị đếm ngược
+    //public Text countdownText; // UI hiển thị đếm ngược
     public Transform groundCheck;
     public Transform frontCheck;
     public LayerMask groundLayer;
@@ -43,6 +43,7 @@ public class Controller2Player : MonoBehaviour
     // Nhan vat
     public SpriteRenderer spriteCharacter;
     public Animator animator;
+    public bool isPlayer1;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,8 +51,8 @@ public class Controller2Player : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.velocity = Vector2.zero;
         defaultSpeed = moveSpeed;
-        Time.timeScale = 0; // Dừng game ngay từ đầu
-        StartCoroutine(CountdownAndStart()); // Đếm ngược rồi bắt đầu game
+        //Time.timeScale = 0; // Dừng game ngay từ đầu
+        //StartCoroutine(CountdownAndStart()); // Đếm ngược rồi bắt đầu game
         // Ẩn hiệu ứng  ban đầu
         if (fartEffect != null) fartEffect.SetActive(false);
         if (speedEffect != null) speedEffect.SetActive(false);
@@ -63,21 +64,7 @@ public class Controller2Player : MonoBehaviour
         audioSource.Play();
     }
 
-    IEnumerator CountdownAndStart()
-    {
-        countdownText.gameObject.SetActive(true); // Hiện UI đếm ngược
-        for (int i = 1; i > 0; i--)
-        {
-            yield return new WaitForSecondsRealtime(1f); // Chờ 1 giây (không bị ảnh hưởng bởi Time.timeScale)
-        }
-
-        countdownText.text = "GO!";
-        yield return new WaitForSecondsRealtime(1f);
-
-        countdownText.gameObject.SetActive(false); // Ẩn UI khi game bắt đầu
-        Time.timeScale = 1; // Bắt đầu game
-        isGameStarted = true;
-    }
+    
 
     void Update()
     {
@@ -130,11 +117,11 @@ public class Controller2Player : MonoBehaviour
     
     public void SwapGravity()
     {
-        if(rb.gravityScale < 0)
+        if(rb.transform.rotation.z == 180)
         {
-            ReverseGravity(rb.gravityScale, 0, 0);
+            ReverseGravity(Mathf.Abs(gravityScale), 0, 0);
         }
-        ReverseGravity(rb.gravityScale*(-1), 180, 180);
+        ReverseGravity(-Mathf.Abs(gravityScale), 180, 180);
     }
 
     // Hàm đẩy lùi
@@ -158,7 +145,7 @@ public class Controller2Player : MonoBehaviour
     {
         float rayLength = 0.2f; // Khoảng cách kiểm tra
         Vector2 originCenter = groundCheck.position;
-        Vector2 originLeft = originCenter + new Vector2(-1f, 0);
+        Vector2 originLeft = originCenter + new Vector2(-0.2f, 0);
 
         // Bắn 2 tia xuống
         bool center = Physics2D.Raycast(originCenter, Vector2.down, rayLength, groundLayer);
@@ -193,8 +180,8 @@ public class Controller2Player : MonoBehaviour
         rb.velocity = Vector2.zero;
         if (opponent != null)
         {
-            opponent.Win();
             PlaySound(victorySound);
+            opponent.Win();
             pauseButton.SetActive(false);
         }
     }
@@ -206,14 +193,19 @@ public class Controller2Player : MonoBehaviour
             winPopUp.SetActive(true);
             winText.text = gameObject.name + " Wins!";
         }
-
+        
         Time.timeScale = 0f; // Dừng game
+        StartCoroutine(NewRound());
+        
     }
 
-    public void RestartGame()
+    IEnumerator NewRound()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSecondsRealtime(1f);
+        if (gameObject.name == "Player1")
+            GameManager2PlayerCom.Instance.PlayerWin(1);
+        else
+            GameManager2PlayerCom.Instance.PlayerWin(2);
     }
 
     IEnumerator HideEffectCoroutine(GameObject effect, float delay)
@@ -410,4 +402,5 @@ public class Controller2Player : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
     }
+
 }
